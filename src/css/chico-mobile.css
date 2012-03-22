@@ -1344,9 +1344,8 @@ footer .version {
 .ch-expando h3, .ch-expando > ul {
 	padding: 15px 10px;
 }
-div.ch-expando, ul.ch-expando > li {
+.ch-expando {
 	border: 1px solid #DDD;
-	margin-bottom: -1px;
 }
 ul.ch-expando > li > ul {
 	padding: 15px 10px;
@@ -1356,6 +1355,9 @@ ul.ch-expando > li > ul {
 	list-style-position: inside;
 	list-style-type: disc;
 }
+.ch-expando > li {
+	border-bottom: 1px dotted #CCC;
+}
 .ch-expando > li:first-of-type {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -1363,8 +1365,10 @@ ul.ch-expando > li > ul {
 .ch-expando > li:last-of-type {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	border-bottom-style: none;
 }
 .ch-expando h3{
+	background-color: #f4f4f4;
 	color: #555;
 	cursor: pointer;
 	display: block;
@@ -1373,7 +1377,7 @@ ul.ch-expando > li > ul {
 	position: relative;
 	text-shadow: 0 1px 1px #FFF;
 
-	background-image: linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
+	/*background-image: linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
 	background-image: -o-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
 	background-image: -moz-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
 	background-image: -webkit-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
@@ -1384,7 +1388,7 @@ ul.ch-expando > li > ul {
 		left top,
 		color-stop(0, #EDEDED),
 		color-stop(0.54, #F7F7F7)
-	);
+	);*/
 }
 
 .ch-expando h3:before{
@@ -1702,4 +1706,3 @@ input[readonly]:focus {
 .ch-modal-content {
 	background-color: #FFFFFF;
 }
-
