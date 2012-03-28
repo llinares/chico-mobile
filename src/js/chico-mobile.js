@@ -60,9 +60,34 @@ ch.mobile = ( function () {
 	},
 
 	expando = function (ele, toShow) {
-		$(ele).bind("click", function () {
-			var $toShow = toShow || $(this).next();
+
+		// If the url have a hash with some element in the expando
+		if(location.hash){
+			var $anchorInit = $(".ch-expando "+location.hash),
+				$toShow = $anchorInit.parent().next();
+			
+			$toShow.load($anchorInit.attr("href")).removeClass("ch-hide");
+			$anchorInit.parent().addClass("ch-selected ch-icon-chevron-up");
+
+		}
+
+		$(ele).bind("click", function (event) {
+			event.preventDefault();
+
+			var $toShow = toShow || $(this).next(),
+				$anchor = $(this).find("a");
+
 			if ( $toShow.hasClass("ch-hide") ){
+
+				// Is an anchor and the url don't loaded
+				if($anchor.length > 0 && location.hash != "#" + $anchor.attr("id")) {
+					// Request ajax
+					var url = $anchor.attr("href");
+					$toShow.load(url)
+					//Change location hash
+	            	var hash = window.location.hash = "#" + $anchor.attr("id");
+				}
+
 				$toShow.removeClass("ch-hide");
 				$(this).addClass("ch-selected ch-icon-chevron-up").removeClass("ch-icon-chevron-down");
 

@@ -1345,7 +1345,7 @@ footer .version {
 	padding: 15px 10px;
 }
 .ch-expando {
-	border: 1px solid #DDD;
+	border: 1px solid #EEE;
 }
 ul.ch-expando > li > ul {
 	padding: 15px 10px;
@@ -1407,6 +1407,9 @@ ul.ch-expando > li > ul {
 }
 .ch-expando h3.ch-selected:before {
 	color: #333;
+}
+.ch-expando h3 a {
+	color: #555;
 }
 .ch-expando-content {
 	margin: 0;
@@ -1705,4 +1708,14 @@ input[readonly]:focus {
 
 .ch-modal-content {
 	background-color: #FFFFFF;
+}
+
+.no-pick {
+	background: #F5F5F5;
+	display: block;
+	padding: 10px;
+	height: 70px; width: 70px;
+}
+.no-pick:before {
+	font-size: 40px;
 }
