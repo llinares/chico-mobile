@@ -1,5 +1,5 @@
 /*
-* Chico Mobile 0.4.0 MIT Licence
+* Chico Mobile 0.4.1 MIT Licence
 * @autor <chico@mercadolibre.com>
 * @link http://www.chico-ui.com.ar
 * @team Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle, Nicolas Brizuela
@@ -13,7 +13,7 @@
 	var ch = (function () {
 
 		var core = {
-			"version": "0.1"		
+			"version": "0.4.1"		
 		};
 
 		return core;
@@ -134,9 +134,53 @@ ch.mobile = ( function () {
 			} );
 		};
 	},
+
+	hash = (function (){
+
+	    var arr = {},
+	        last = null;
+
+	    var push = function (key, show, hide) {
+	      arr[key] = {
+	        show: show,
+	        hide: hide
+	      };
+	    },
+
+	    init = function () {
+	    
+	      var hash = location.hash; 
+	    
+	      if(arr[hash]){
+	        arr[hash].show();
+	        last = arr[hash];
+	      };
+
+	      if(hash === ""){
+	        try {
+	          last.hide();  
+	        }catch(err){
+	          //Some
+	        }
+	      }
+
+	    };
+
+	    window.onhashchange = init;
+
+	    var Core = {
+
+	      init : init,
+	      push : push,
+	      arr : arr
+
+	    };
+
+	    return Core;
+
+	})(),
 	
 	modal = function (trigger, content, fn) {
-
 		// Get some elements
 		var $trigger = $(trigger),
 			$content = $(content).addClass("ch-modal-content"),
@@ -163,15 +207,8 @@ ch.mobile = ( function () {
 			window.scrollTo(0, 1);
 
 			//Change location hash
-            var hash = window.location.hash = "#!" + $content.attr("id");
-
-            window.onhashchange = function(){
-            	if(location.hash == "#!" + $content.attr("id")){
-            		show()
-            	}else {
-            		hide()
-            	}
-        	}
+      		var url = window.location.hash = "#!" + $content.attr("id");
+      
 
 		};
 		
@@ -187,11 +224,16 @@ ch.mobile = ( function () {
 			window.location.hash = "";
 			//unbind event on close
             //$(window).unbind('hashchange');
+      		//$(window).unbind("onhashchange");
+      
 		}
 
 		// Creates close button and add behaivor
 		var $close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>").bind("click", hide);
 		
+    	// Instancing hash navigation
+    	hash.push("#!"+$content.attr("id"), show, hide);
+   
 		$content
 			.removeClass("ch-hide")
 			.wrapAll($view);
@@ -204,48 +246,6 @@ ch.mobile = ( function () {
 			event.stopPropagation();
 			show(this);
 		});
-		
-		/*var width = document.documentElement.clientWidth,
-			$trigger = $(trigger),
-			$content = $(content).addClass("ch-modal-content"),
-			$view = $("<div>")
-				.addClass("ch-modal ch-hide")
-				.css({
-					"min-height": document.documentElement.clientHeight,
-					"left": width
-				}),
-			$index = $("div[data-page=index]"),
-			lastScroll;
-
-		// Functions
-		var show = function (trigger) {
-			lastScroll = window.pageYOffset;
-
-			if (fn) {
-				fn.call(trigger);
-			}
-			
-			$index.css({"position":"absolute","top": -lastScroll,"left":0});
-			window.scrollTo(0, 1);
-			
-			$view.removeClass("ch-hide");
-			
-			$view.anim({"left": 0}, 0.3, "ease-out", function () {
-				$index.addClass("ch-hide");
-			});
-		};
-		
-		var hide = function () {
-			$index.removeClass("ch-hide");
-			$view.anim({"left": document.documentElement.clientWidth}, 0.3, "ease-out", function () {
-				$view.addClass("ch-hide");
-				$index.css({
-					"position":"relative",
-					"top": 0
-				});
-				window.scrollTo(0, lastScroll);
-			});
-		};*/
 
 	};
 
