@@ -1,0 +1,39 @@
+/*
+* Reset
+*/
+[class^="ch-icon-"]:before, [class*=" ch-icon-"]:before,
+[class^="ch-icon-"]:after, [class*=" ch-icon-"]:after {
+	display: none;
+}
+.ch-list li a:after, .ch-list li a:before {
+	content: "&nbsp;";
+	display: none;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+/*
+* Sprite
+*/
+.ch-header-form input[type="submit"], .ch-header-form .ch-icon-search, .ch-icon-list, .ch-list li a {
+	background-image: url("../assets/sprite-mobile.png");
+	background-repeat: no-repeat;
+}
+.ch-list li a {
+	background-position: right -183px;
+}
+.ch-header-form input[type="submit"], .ch-header-form .ch-icon-search {
+	background-position: 0 3px;
+	width: 30px; height: 30px;
+}
+.ch-icon-list {
+	background-position: 10px -48px;
+}
+
+/*
+*	Messages
+*/
+.ch-message-attention, .ch-message-check, .ch-message-error, 
+.ch-message-help, .ch-message-information, .ch-message-ok {
+	padding-left: 10px;
+}

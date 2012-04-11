@@ -1,5 +1,5 @@
 /*
-* Chico Mobile 0.4.1 MIT Licence
+* Chico Mobile 0.4.2 MIT Licence
 * @autor <chico@mercadolibre.com>
 * @link http://www.chico-ui.com.ar
 * @team Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle, Nicolas Brizuela
@@ -13,7 +13,7 @@
 	var ch = (function () {
 
 		var core = {
-			"version": "0.4.1"		
+			"version": "0.4.2"		
 		};
 
 		return core;
@@ -98,42 +98,22 @@ ch.mobile = ( function () {
 		} );
 	},
 	
-	hideBar = function( win ){
-	
-		var doc = win.document;
-	
-		// If there's a hash, or addEventListener is undefined, stop here
-		if( !location.hash && win.addEventListener ){
-	
-			//scroll to 1
-			window.scrollTo( 0, 1 );
-			
-			var scrollTop = 1,
-			
-				getScrollTop = function(){
-					return win.pageYOffset || doc.compatMode === "CSS1Compat" && doc.documentElement.scrollTop || doc.body.scrollTop || 0;
-				},
-	
-				//reset to 0 on bodyready, if needed
-				bodycheck = setInterval(function(){
-					if( doc.body ){
-						clearInterval( bodycheck );
-						scrollTop = getScrollTop();
-						win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
-					}	
-				}, 15 );
-	
-			win.addEventListener("load", function(){
-				setTimeout(function(){
-					//at load, if user hasn't scrolled more than 20 or so...
-					if( getScrollTop() < 20 ){
-						//reset to hide addr bar at onload
-						win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
-					}
-				}, 0);
-			} );
-		};
-	},
+	agentCompatible = (function(){
+		
+		// Fix for Android 2.1
+		var css = $("<link>").attr({
+			"href": "src/css/chico-mobile-compatible.css?v5",
+			"rel": "stylesheet"
+		}),
+			os = MBP.ua.split(";");
+
+		// Font face detection for Android
+		if (os[2] == " Android 2.1" || os[2] == " Android 2.1-update1"){		
+			$("html").addClass("ch-no-fontface");
+			$("head").append(css);
+		}
+
+	})(),
 
 	hash = (function (){
 
@@ -253,7 +233,6 @@ ch.mobile = ( function () {
 	var Core = {
 		menu: menu,
 		expando: expando,
-		hideBar: hideBar,
 		modal: modal
 	}
 
