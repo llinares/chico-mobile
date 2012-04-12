@@ -136,7 +136,7 @@ ch.mobile = ( function () {
 	        last = arr[hash];
 	      };
 
-	      if(hash === ""){
+	      if(hash == ""){
 	        try {
 	          last.hide();  
 	        }catch(err){
@@ -144,9 +144,45 @@ ch.mobile = ( function () {
 	        }
 	      }
 
-	    };
+	    },
 
-	    window.onhashchange = init;
+	    onHashChange = function(event) {
+			//get hash function
+			var getHashValue = function() {
+				var arr = window.location.hash.split("#");
+				var hasValue = arr[1];
+				//sets default
+				if (typeof hasValue == "undefined") {
+					return false;
+				}
+
+				var hashLen = hasValue.indexOf("?");
+				if(hashLen>0){
+					hasValue = hasValue.substring(0,hashLen);
+				}
+				return hasValue;
+			}
+
+			//last hash
+			var lastHash = getHashValue();
+
+			//checker
+			(function watchHash() {
+				var hash = getHashValue();
+
+				if (hash !== lastHash) {
+					event();
+					lastHash = hash;
+				}
+				
+				var t = setTimeout(watchHash, 100);
+
+			})();
+		};
+
+		onHashChange(init);
+
+	    //window.onhashchange = init;
 
 	    var Core = {
 
@@ -171,6 +207,7 @@ ch.mobile = ( function () {
 
 		// Functions
 		var show = function (trigger) {
+
 			// Callbacks on Show
 			if (fn) {
 				fn.call(trigger);
@@ -184,32 +221,23 @@ ch.mobile = ( function () {
 			$view.removeClass("ch-hide");
 
 			// Set scroll to top
-			window.scrollTo(0, 1);
-
-			//Change location hash
-      		var url = window.location.hash = "#!" + $content.attr("id");
-      
+			window.scrollTo(0, 1);  
 
 		};
 		
 		var hide = function () {
+
 			// Toogle classes to show and hide
 			$index.removeClass("ch-hide");
 			$view.addClass("ch-hide");
 
 			// Update scroll position
 			window.scrollTo(0, lastScroll);
-
-			//Change location hash
-			window.location.hash = "";
-			//unbind event on close
-            //$(window).unbind('hashchange');
-      		//$(window).unbind("onhashchange");
       
 		}
 
 		// Creates close button and add behaivor
-		var $close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>").bind("click", hide);
+		var $close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>").bind("click", function(){window.location.hash = "";});
 		
     	// Instancing hash navigation
     	hash.push("#!"+$content.attr("id"), show, hide);
@@ -224,7 +252,8 @@ ch.mobile = ( function () {
 		$trigger.live("click", function (event) {
 			event.preventDefault();
 			event.stopPropagation();
-			show(this);
+			//show(this);
+			var url = window.location.hash = "#!" + $content.attr("id");
 		});
 
 	};
