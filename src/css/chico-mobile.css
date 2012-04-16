@@ -1,5 +1,5 @@
 /*
-* Chico Mobile 0.4.0 MIT Licence
+* Chico Mobile 0.4.2 MIT Licence
 * @autor <chico@mercadolibre.com>
 * @link http://www.chico-ui.com.ar
 * @team Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle, Nicolas Brizuela
@@ -431,7 +431,7 @@ hr {
 	font-family: "FontAwesome";
 	font-size: 16px;
     content: "\f054";
-    color: #888;
+    color: #999;
     position: absolute;
 	right: 15px; top: 5%;
 }
@@ -941,12 +941,34 @@ input[type="submit"].ch-btn-action:focus {
 */
 
 .ch-logo {
+	background-image: url("../assets/logo.png");
+	background-repeat: no-repeat;
+	height: 35px;
+	text-indent: -9999px;
 	position: absolute;
 	top: 5px;
 	left: 5px;
 	margin: 0;
 	width: 70px;
 	z-index: 1;
+}
+
+/* Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.ch-logo {
+		background-image: url("../assets/logo-medium.png");
+		background-size: 66.67%;
+		width: auto;
+	}
+}
+
+/* Pixel ratio of 2. Background-size is 1/2 = 50% (of a 200px image) */
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+	.ch-logo {
+		background-image: url("../assets/logo-large.png");
+		background-size: 51%;
+		width: auto;
+	}
 }
 
 .ch-header {
@@ -1096,10 +1118,6 @@ input[type="submit"].ch-btn-action:focus {
 }
 
 .ch-header-form input[type="submit"], .ch-header-form .ch-icon-search {
-	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK6wAACusBgosNWgAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTgvMS8xMgzSLIYAAAGHSURBVDiNpdRBi+owFIbhN03b7KoQLC6F4tJV//8/UBBcloLrYmw3LhobM4uZFrXWce79IBDa8ISc9FR47z0/cc5RVRXGGNq27R+jlEJrTZqmSCmZiuixpmk4Ho845xBCDMN7PwwpJavVivl8Po01TUNZlgBEUcRyuSRJEqIowlpLXdcYY7DWApBl2UtQdF3nD4cDzjmSJCHLMoIgGC10zlEUBZfLBSklm81mdOSgqiqcc8RxPAkBSClZr9eEYTjU9jmBMQYhBIvFYhK6B7XWCCEwxoyxtm0JgmCyqM/psfvbHrB+EsfxR1gYhpPvAgDv/XBTv8Vay92n+YgppfDeU9f1R5gxBu89SqkxprXGe8/pdMI59xbqum7YVGs9xvoWsdZSFAW3220SKoqCruuQUpKm6WjNqAPCMCRNU2azGUoprLWcz2eMMVyvV+C7A8qyJM/zMQave7PPc2/2GwMPoPjrX2O/34+O14MP2KfZ7XYvwX/CpsD3zfgmz8XP8xz8f2a73Q7zL+l4O6wLfZo4AAAAAElFTkSuQmCC);
-	background-color: #fff;
-	background-position: 50%;
-	background-repeat: no-repeat;*/
 	border: none!important;
 	position: absolute;
 	top: 7px;
@@ -1146,10 +1164,6 @@ input[type="submit"].ch-btn-action:focus {
 	width: 48px;
 }
 
-/*
-.ch-header menu a {
-	background-position: 50% 50%;
-}*/
 .ch-header menu span {
 	display: none;
 }
@@ -1167,9 +1181,6 @@ input[type="submit"].ch-btn-action:focus {
 	display:none;
 }
 
-/*.ch-header .ch-nav .ch-ico {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAVCAMAAABrN94UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjFGRTY1NTIyRDc3MTFFMTg0NUFGNDlCNkRGRkI2NjgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjFGRTY1NTMyRDc3MTFFMTg0NUFGNDlCNkRGRkI2NjgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNjc2N0JGMzJENzYxMUUxODQ1QUY0OUI2REZGQjY2OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNjc2N0JGNDJENzYxMUUxODQ1QUY0OUI2REZGQjY2OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnCW/dsAAAAGUExURaWXN////+LSJJgAAAACdFJOU/8A5bcwSgAAACBJREFUeNpiYMQBGKgqwQAEEBIB8EuM2kFLO7ADgAADAHqYAWn6edjjAAAAAElFTkSuQmCC);
-}*/
 .ch-header menu a:before {
 	color: #A59737;
 	text-shadow: 0 1px 1px #FFF;
@@ -1344,9 +1355,8 @@ footer .version {
 .ch-expando h3, .ch-expando > ul {
 	padding: 15px 10px;
 }
-div.ch-expando, ul.ch-expando > li {
-	border: 1px solid #DDD;
-	margin-bottom: -1px;
+.ch-expando {
+	border: 1px solid #EEE;
 }
 ul.ch-expando > li > ul {
 	padding: 15px 10px;
@@ -1356,6 +1366,9 @@ ul.ch-expando > li > ul {
 	list-style-position: inside;
 	list-style-type: disc;
 }
+.ch-expando > li {
+	border-bottom: 1px dotted #CCC;
+}
 .ch-expando > li:first-of-type {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -1363,8 +1376,10 @@ ul.ch-expando > li > ul {
 .ch-expando > li:last-of-type {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	border-bottom-style: none;
 }
 .ch-expando h3{
+	background-color: #f4f4f4;
 	color: #555;
 	cursor: pointer;
 	display: block;
@@ -1372,19 +1387,6 @@ ul.ch-expando > li > ul {
 	margin: 0;
 	position: relative;
 	text-shadow: 0 1px 1px #FFF;
-
-	background-image: linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
-	background-image: -o-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
-	background-image: -moz-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
-	background-image: -webkit-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
-	background-image: -ms-linear-gradient(bottom, #EDEDED 0%, #F7F7F7 54%);
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #EDEDED),
-		color-stop(0.54, #F7F7F7)
-	);
 }
 
 .ch-expando h3:before{
@@ -1403,6 +1405,9 @@ ul.ch-expando > li > ul {
 }
 .ch-expando h3.ch-selected:before {
 	color: #333;
+}
+.ch-expando h3 a {
+	color: #555;
 }
 .ch-expando-content {
 	margin: 0;
@@ -1703,3 +1708,12 @@ input[readonly]:focus {
 	background-color: #FFFFFF;
 }
 
+.no-pick {
+	background: #F5F5F5;
+	display: block;
+	padding: 10px;
+	height: 70px; width: 70px;
+}
+.no-pick:before {
+	font-size: 40px;
+}

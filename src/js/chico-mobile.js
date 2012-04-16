@@ -1,5 +1,5 @@
 /*
-* Chico Mobile 0.4.0 MIT Licence
+* Chico Mobile 0.4.2 MIT Licence
 * @autor <chico@mercadolibre.com>
 * @link http://www.chico-ui.com.ar
 * @team Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle, Nicolas Brizuela
@@ -13,7 +13,7 @@
 	var ch = (function () {
 
 		var core = {
-			"version": "0.1"		
+			"version": "0.4.2"		
 		};
 
 		return core;
@@ -60,9 +60,34 @@ ch.mobile = ( function () {
 	},
 
 	expando = function (ele, toShow) {
-		$(ele).bind("click", function () {
-			var $toShow = toShow || $(this).next();
+
+		// If the url have a hash with some element in the expando
+		if(location.hash){
+			var $anchorInit = $(".ch-expando "+location.hash),
+				$toShow = $anchorInit.parent().next();
+			
+			$toShow.load($anchorInit.attr("href")).removeClass("ch-hide");
+			$anchorInit.parent().addClass("ch-selected ch-icon-chevron-up");
+
+		}
+
+		$(ele).bind("click", function (event) {
+			event.preventDefault();
+
+			var $toShow = toShow || $(this).next(),
+				$anchor = $(this).find("a");
+
 			if ( $toShow.hasClass("ch-hide") ){
+
+				// Is an anchor and the url don't loaded
+				if($anchor.length > 0 && location.hash != "#" + $anchor.attr("id")) {
+					// Request ajax
+					var url = $anchor.attr("href");
+					$toShow.load(url)
+					//Change location hash
+	            	var hash = window.location.hash = "#" + $anchor.attr("id");
+				}
+
 				$toShow.removeClass("ch-hide");
 				$(this).addClass("ch-selected ch-icon-chevron-up").removeClass("ch-icon-chevron-down");
 
@@ -73,45 +98,105 @@ ch.mobile = ( function () {
 		} );
 	},
 	
-	hideBar = function( win ){
-	
-		var doc = win.document;
-	
-		// If there's a hash, or addEventListener is undefined, stop here
-		if( !location.hash && win.addEventListener ){
-	
-			//scroll to 1
-			window.scrollTo( 0, 1 );
-			
-			var scrollTop = 1,
-			
-				getScrollTop = function(){
-					return win.pageYOffset || doc.compatMode === "CSS1Compat" && doc.documentElement.scrollTop || doc.body.scrollTop || 0;
-				},
-	
-				//reset to 0 on bodyready, if needed
-				bodycheck = setInterval(function(){
-					if( doc.body ){
-						clearInterval( bodycheck );
-						scrollTop = getScrollTop();
-						win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
-					}	
-				}, 15 );
-	
-			win.addEventListener("load", function(){
-				setTimeout(function(){
-					//at load, if user hasn't scrolled more than 20 or so...
-					if( getScrollTop() < 20 ){
-						//reset to hide addr bar at onload
-						win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
-					}
-				}, 0);
-			} );
+	agentCompatible = (function(){
+		
+		// Fix for Android 2.1
+		var css = $("<link>").attr({
+			"href": "src/css/chico-mobile-compatible.css?v5",
+			"rel": "stylesheet"
+		}),
+			os = MBP.ua.split(";");
+
+		// Font face detection for Android
+		if (os[2] == " Android 2.1" || os[2] == " Android 2.1-update1"){		
+			$("html").addClass("ch-no-fontface");
+			$("head").append(css);
+		}
+
+	})(),
+
+	hash = (function (){
+
+	    var arr = {},
+	        last = null;
+
+	    var push = function (key, show, hide) {
+	      arr[key] = {
+	        show: show,
+	        hide: hide
+	      };
+	    },
+
+	    init = function () {
+	    
+	      var hash = location.hash; 
+	    
+	      if(arr[hash]){
+	        arr[hash].show();
+	        last = arr[hash];
+	      };
+
+	      if(hash == ""){
+	        try {
+	          last.hide();  
+	        }catch(err){
+	          //Some
+	        }
+	      }
+
+	    },
+
+	    onHashChange = function(event) {
+			//get hash function
+			var getHashValue = function() {
+				var arr = window.location.hash.split("#");
+				var hasValue = arr[1];
+				//sets default
+				if (typeof hasValue == "undefined") {
+					return false;
+				}
+
+				var hashLen = hasValue.indexOf("?");
+				if(hashLen>0){
+					hasValue = hasValue.substring(0,hashLen);
+				}
+				return hasValue;
+			}
+
+			//last hash
+			var lastHash = getHashValue();
+
+			//checker
+			(function watchHash() {
+				var hash = getHashValue();
+
+				if (hash !== lastHash) {
+					event();
+					lastHash = hash;
+				}
+				
+				var t = setTimeout(watchHash, 100);
+
+			})();
 		};
-	},
+
+		onHashChange(init);
+
+	    //window.onhashchange = init;
+
+	    var Core = {
+
+	      init : init,
+	      push : push,
+	      arr : arr
+
+	    };
+
+	    return Core;
+
+	})(),
 	
 	modal = function (trigger, content, fn) {
-
 		// Get some elements
 		var $trigger = $(trigger),
 			$content = $(content).addClass("ch-modal-content"),
@@ -122,6 +207,7 @@ ch.mobile = ( function () {
 
 		// Functions
 		var show = function (trigger) {
+
 			// Callbacks on Show
 			if (fn) {
 				fn.call(trigger);
@@ -135,38 +221,27 @@ ch.mobile = ( function () {
 			$view.removeClass("ch-hide");
 
 			// Set scroll to top
-			window.scrollTo(0, 1);
-
-			//Change location hash
-            var hash = window.location.hash = "#!" + $content.attr("id");
-
-            window.onhashchange = function(){
-            	if(location.hash == "#!" + $content.attr("id")){
-            		show()
-            	}else {
-            		hide()
-            	}
-        	}
+			window.scrollTo(0, 1);  
 
 		};
 		
 		var hide = function () {
+
 			// Toogle classes to show and hide
 			$index.removeClass("ch-hide");
 			$view.addClass("ch-hide");
 
 			// Update scroll position
 			window.scrollTo(0, lastScroll);
-
-			//Change location hash
-			window.location.hash = "";
-			//unbind event on close
-            //$(window).unbind('hashchange');
+      
 		}
 
 		// Creates close button and add behaivor
-		var $close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>").bind("click", hide);
+		var $close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>").bind("click", function(){window.location.hash = "";});
 		
+    	// Instancing hash navigation
+    	hash.push("#!"+$content.attr("id"), show, hide);
+   
 		$content
 			.removeClass("ch-hide")
 			.wrapAll($view);
@@ -177,50 +252,9 @@ ch.mobile = ( function () {
 		$trigger.live("click", function (event) {
 			event.preventDefault();
 			event.stopPropagation();
-			show(this);
+			//show(this);
+			var url = window.location.hash = "#!" + $content.attr("id");
 		});
-		
-		/*var width = document.documentElement.clientWidth,
-			$trigger = $(trigger),
-			$content = $(content).addClass("ch-modal-content"),
-			$view = $("<div>")
-				.addClass("ch-modal ch-hide")
-				.css({
-					"min-height": document.documentElement.clientHeight,
-					"left": width
-				}),
-			$index = $("div[data-page=index]"),
-			lastScroll;
-
-		// Functions
-		var show = function (trigger) {
-			lastScroll = window.pageYOffset;
-
-			if (fn) {
-				fn.call(trigger);
-			}
-			
-			$index.css({"position":"absolute","top": -lastScroll,"left":0});
-			window.scrollTo(0, 1);
-			
-			$view.removeClass("ch-hide");
-			
-			$view.anim({"left": 0}, 0.3, "ease-out", function () {
-				$index.addClass("ch-hide");
-			});
-		};
-		
-		var hide = function () {
-			$index.removeClass("ch-hide");
-			$view.anim({"left": document.documentElement.clientWidth}, 0.3, "ease-out", function () {
-				$view.addClass("ch-hide");
-				$index.css({
-					"position":"relative",
-					"top": 0
-				});
-				window.scrollTo(0, lastScroll);
-			});
-		};*/
 
 	};
 
@@ -228,7 +262,6 @@ ch.mobile = ( function () {
 	var Core = {
 		menu: menu,
 		expando: expando,
-		hideBar: hideBar,
 		modal: modal
 	}
 
