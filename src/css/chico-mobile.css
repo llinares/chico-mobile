@@ -962,6 +962,7 @@ input[type="submit"].ch-btn-action:focus {
 	}
 }
 
+
 /* Pixel ratio of 2. Background-size is 1/2 = 50% (of a 200px image) */
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
 	.ch-logo {
@@ -1138,7 +1139,10 @@ input[type="submit"].ch-btn-action:focus {
 .ch-header-form input[type="submit"]:active {
 	width: 36px;
 }
-
+.ch-header-form .ch-icon-search {
+	background-color: #FFF;
+	height: 30px;
+}
 
 /*
 * Menu
@@ -1366,7 +1370,7 @@ ul.ch-expando > li > ul {
 	list-style-position: inside;
 	list-style-type: disc;
 }
-.ch-expando > li {
+ul.ch-expando > li {
 	border-bottom: 1px dotted #CCC;
 }
 .ch-expando > li:first-of-type {

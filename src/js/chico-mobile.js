@@ -102,7 +102,7 @@ ch.mobile = ( function () {
 		
 		// Fix for Android 2.1
 		var css = $("<link>").attr({
-			"href": "src/css/chico-mobile-compatible.css?v5",
+			"href": "src/css/chico-mobile-compatible.css",
 			"rel": "stylesheet"
 		}),
 			os = MBP.ua.split(";");
