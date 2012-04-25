@@ -695,9 +695,9 @@ input[type="submit"].ch-btn-action:focus {
 .ch-btn-action:focus {
 	font-size: 1.53em;
 	display: block;
-	padding: 0 10px;
-	height: 46px;
-	line-height: 46px;
+	padding: 10px;
+	/*height: 46px;
+	line-height: 2.2em;*/
 }
 
 /* Back is only small */
@@ -710,10 +710,9 @@ input[type="submit"].ch-btn-action:focus {
 	font-weight: normal;
 	display: inline-block;
 	width: auto !important;
-	height: 32px;
+	/*height: 32px;*/
 	font-size: 1em;
-	line-height: 32px;
-	padding: 0 10px;
+	padding: 7px 10px;
 }
 
 /* Disabled */
@@ -1072,8 +1071,8 @@ input[type="submit"].ch-btn-action:focus {
 	position: absolute;
 	top: 7px;
 	font-size: 13px;
-	height: 28px;
-	line-height: 29px;
+	/*height: 28px;
+	line-height: 29px;*/
 	left: 5px;
 	/*-o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
 	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
@@ -1653,7 +1652,7 @@ input[readonly]:focus {
 *	Aplicated filters
 */
 .ch-filters {
-	margin: 0 0 10px;
+	margin: 0 0 10px;	
 }
 .ch-filters li {
 	display: inline-block;
