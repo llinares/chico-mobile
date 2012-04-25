@@ -1275,79 +1275,6 @@ footer .version {
 
 }
 
-
-/*
-* Questions
-*/
-.ch-questions .question {
-	background: #FFF;
-	background-image: linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -o-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -moz-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -webkit-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -ms-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0, rgb(239,239,239)),
-		color-stop(1, rgb(255,255,255))
-	);
-	border-top: 1px solid #DDD;
-	padding: 10px 0;
-}
-
-.ch-questions .ch-reference {
-	padding: 0 10px;
-}
-.ch-questions p {
-	margin: 0;	
-}
-.ch-questions .ch-list {
-	background: none;
-	border: none;
-	border-radius: none;
-}
-
-.ch-questions .ch-list li,
-.ch-questions .ch-list li a {
-	color: #333;
-	line-height: 1em;
-}
-.ch-questions .ch-list li a {
-	padding: 10px 30px 10px 10px;
-}
-.ch-questions .ch-list li:before {
-	vertical-align: bottom;
-}
-.ch-questions .details {
-	color: #666;
-	font-size: 12px;
-}
-
-/*
-* Item reference
-*/
-.ch-reference img {
-	border: 1px solid #ccc;
-	padding: 1px;
-	float: left;
-}
-.ch-reference .bd {
-	padding-left: 50px;
-}
-.ch-reference .bd p {
-	margin: 0 0 5px;
-}
-.ch-reference .bd .title {
-	font-weight: bold;
-}
-.ch-reference .bd .details {
-	color: #666;
-	font-size: 12px;
-}
-
-
 /*
 * Expando
 */
@@ -1720,4 +1647,41 @@ input[readonly]:focus {
 }
 .no-pick:before {
 	font-size: 40px;
+}
+
+/*
+*	Aplicated filters
+*/
+.ch-filters {
+	margin: 0 0 10px;
+}
+.ch-filters li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+.ch-filters a {
+	background-color: #F4F4F4;
+	border: 1px solid #CECECE;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	color: #666;
+	margin: 4px 0 0;
+	padding: 5px 25px 5px 10px;
+	text-shadow: 0 1px 1px #fff;
+	position: relative;
+	display: inline-block;
+	width: auto;
+	z-index: 2;
+}
+.ch-filters a:before {
+	font-size: 12px;
+	height: 14px;
+	overflow: hidden;
+	position: absolute;
+	right: 10px;
+	top: 7px;
+	z-index: 1;
 }
