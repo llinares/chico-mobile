@@ -156,7 +156,7 @@ li[class^="ch-icon-"], li[class*=" ch-icon-"] {
     font-family: "FontAwesome";
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 1.7em;
     display: inline-block;
     text-decoration: inherit;
     text-align: center;
@@ -168,7 +168,7 @@ a [class^="ch-icon-"], a [class*=" ch-icon-"] {
 }
 /* makes the font 33% larger relative to the icon container */
 .icon-large:before {
-    font-size: 32px;
+    font-size: 2.28em;
     margin-right: 5px;
     vertical-align: middle;
 }
@@ -429,7 +429,7 @@ hr {
 
 .ch-list li a:after {
 	font-family: "FontAwesome";
-	font-size: 16px;
+	font-size: 1.14em;
     content: "\f054";
     color: #999;
     position: absolute;
@@ -816,12 +816,12 @@ input[type="submit"].ch-btn-action:focus {
 }
 .ch-message-error:before,
 .ch-message-ok:before {
-	font-size: 16px;
+	font-size: 1.14em;
 }
 .ch-message-attention:before,
 .ch-message-help:before,
 .ch-message-information:before {
-	font-size: 22px;
+	font-size: 1.57em;
 }
 
 /* Message boxes */
@@ -1068,15 +1068,10 @@ input[type="submit"].ch-btn-action:focus {
 
 .ch-header-section .ch-btn-back,
 .ch-header-action .ch-btn-action {
+	font-size: 0.92em;
+	padding-bottom: 6px;
 	position: absolute;
-	top: 7px;
-	font-size: 13px;
-	/*height: 28px;
-	line-height: 29px;*/
-	left: 5px;
-	/*-o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);*/
+	left: 5px; top: 7px;
 }
 
 .ch-header-section .ch-btn-last,
@@ -1123,7 +1118,7 @@ input[type="submit"].ch-btn-action:focus {
 	top: 7px;
 	right: 55px;
 	width: 36px;
-	line-height: 30px;
+	line-height: 2.14em;
 	padding: 0;
 	margin: 0;
 	box-shadow: none;
@@ -1320,12 +1315,9 @@ ul.ch-expando > li {
 }
 
 .ch-expando h3:before{
-	height: 14px;
-	font-size: 16px;
-	overflow: hidden;
+	font-size: 1.17em;
 	position: absolute;
 	right: 20px; top: 15px;
-	width: 16px;
 }
 .ch-expando h3.ch-selected {
 	border-bottom: 1px solid #DDD;
@@ -1676,9 +1668,7 @@ input[readonly]:focus {
 	z-index: 2;
 }
 .ch-filters a:before {
-	font-size: 12px;
-	height: 14px;
-	overflow: hidden;
+	font-size: 0.85em;
 	position: absolute;
 	right: 10px;
 	top: 7px;
