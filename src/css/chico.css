@@ -156,7 +156,7 @@ li[class^="ch-icon-"], li[class*=" ch-icon-"] {
     font-family: "FontAwesome";
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 1.7em;
     display: inline-block;
     text-decoration: inherit;
     text-align: center;
@@ -168,7 +168,7 @@ a [class^="ch-icon-"], a [class*=" ch-icon-"] {
 }
 /* makes the font 33% larger relative to the icon container */
 .icon-large:before {
-    font-size: 32px;
+    font-size: 2.28em;
     margin-right: 5px;
     vertical-align: middle;
 }
@@ -429,7 +429,7 @@ hr {
 
 .ch-list li a:after {
 	font-family: "FontAwesome";
-	font-size: 16px;
+	font-size: 1.14em;
     content: "\f054";
     color: #999;
     position: absolute;
@@ -695,9 +695,9 @@ input[type="submit"].ch-btn-action:focus {
 .ch-btn-action:focus {
 	font-size: 1.53em;
 	display: block;
-	padding: 0 10px;
-	height: 46px;
-	line-height: 46px;
+	padding: 10px;
+	/*height: 46px;
+	line-height: 2.2em;*/
 }
 
 /* Back is only small */
@@ -710,10 +710,9 @@ input[type="submit"].ch-btn-action:focus {
 	font-weight: normal;
 	display: inline-block;
 	width: auto !important;
-	height: 32px;
+	/*height: 32px;*/
 	font-size: 1em;
-	line-height: 32px;
-	padding: 0 10px;
+	padding: 7px 10px;
 }
 
 /* Disabled */
@@ -817,12 +816,12 @@ input[type="submit"].ch-btn-action:focus {
 }
 .ch-message-error:before,
 .ch-message-ok:before {
-	font-size: 16px;
+	font-size: 1.14em;
 }
 .ch-message-attention:before,
 .ch-message-help:before,
 .ch-message-information:before {
-	font-size: 22px;
+	font-size: 1.57em;
 }
 
 /* Message boxes */
@@ -953,7 +952,7 @@ input[type="submit"].ch-btn-action:focus {
 	z-index: 1;
 }
 
-/* Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
+/* Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image)
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
 	.ch-logo {
 		background-image: url("../assets/logo-medium.png");
@@ -961,6 +960,7 @@ input[type="submit"].ch-btn-action:focus {
 		width: auto;
 	}
 }
+*/
 
 /* Pixel ratio of 2. Background-size is 1/2 = 50% (of a 200px image) */
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
@@ -1068,15 +1068,10 @@ input[type="submit"].ch-btn-action:focus {
 
 .ch-header-section .ch-btn-back,
 .ch-header-action .ch-btn-action {
+	font-size: 0.92em;
+	padding-bottom: 6px;
 	position: absolute;
-	top: 7px;
-	font-size: 13px;
-	height: 28px;
-	line-height: 29px;
-	left: 5px;
-	/*-o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5);*/
+	left: 5px; top: 7px;
 }
 
 .ch-header-section .ch-btn-last,
@@ -1123,7 +1118,7 @@ input[type="submit"].ch-btn-action:focus {
 	top: 7px;
 	right: 55px;
 	width: 36px;
-	line-height: 30px;
+	line-height: 2.14em;
 	padding: 0;
 	margin: 0;
 	box-shadow: none;
@@ -1138,7 +1133,10 @@ input[type="submit"].ch-btn-action:focus {
 .ch-header-form input[type="submit"]:active {
 	width: 36px;
 }
-
+.ch-header-form .ch-icon-search {
+	background-color: #FFF;
+	height: 30px;
+}
 
 /*
 * Menu
@@ -1271,79 +1269,6 @@ footer .version {
 
 }
 
-
-/*
-* Questions
-*/
-.ch-questions .question {
-	background: #FFF;
-	background-image: linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -o-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -moz-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -webkit-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -ms-linear-gradient(top, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0, rgb(239,239,239)),
-		color-stop(1, rgb(255,255,255))
-	);
-	border-top: 1px solid #DDD;
-	padding: 10px 0;
-}
-
-.ch-questions .ch-reference {
-	padding: 0 10px;
-}
-.ch-questions p {
-	margin: 0;	
-}
-.ch-questions .ch-list {
-	background: none;
-	border: none;
-	border-radius: none;
-}
-
-.ch-questions .ch-list li,
-.ch-questions .ch-list li a {
-	color: #333;
-	line-height: 1em;
-}
-.ch-questions .ch-list li a {
-	padding: 10px 30px 10px 10px;
-}
-.ch-questions .ch-list li:before {
-	vertical-align: bottom;
-}
-.ch-questions .details {
-	color: #666;
-	font-size: 12px;
-}
-
-/*
-* Item reference
-*/
-.ch-reference img {
-	border: 1px solid #ccc;
-	padding: 1px;
-	float: left;
-}
-.ch-reference .bd {
-	padding-left: 50px;
-}
-.ch-reference .bd p {
-	margin: 0 0 5px;
-}
-.ch-reference .bd .title {
-	font-weight: bold;
-}
-.ch-reference .bd .details {
-	color: #666;
-	font-size: 12px;
-}
-
-
 /*
 * Expando
 */
@@ -1366,7 +1291,7 @@ ul.ch-expando > li > ul {
 	list-style-position: inside;
 	list-style-type: disc;
 }
-.ch-expando > li {
+ul.ch-expando > li {
 	border-bottom: 1px dotted #CCC;
 }
 .ch-expando > li:first-of-type {
@@ -1390,12 +1315,9 @@ ul.ch-expando > li > ul {
 }
 
 .ch-expando h3:before{
-	height: 14px;
-	font-size: 16px;
-	overflow: hidden;
+	font-size: 1.17em;
 	position: absolute;
 	right: 20px; top: 15px;
-	width: 16px;
 }
 .ch-expando h3.ch-selected {
 	border-bottom: 1px solid #DDD;
@@ -1716,4 +1638,39 @@ input[readonly]:focus {
 }
 .no-pick:before {
 	font-size: 40px;
+}
+
+/*
+*	Aplicated filters
+*/
+.ch-filters {
+	margin: 0 0 10px;	
+}
+.ch-filters li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+.ch-filters a {
+	background-color: #F4F4F4;
+	border: 1px solid #CECECE;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	color: #666;
+	margin: 4px 0 0;
+	padding: 5px 25px 5px 10px;
+	text-shadow: 0 1px 1px #fff;
+	position: relative;
+	display: inline-block;
+	width: auto;
+	z-index: 2;
+}
+.ch-filters a:before {
+	font-size: 0.85em;
+	position: absolute;
+	right: 10px;
+	top: 7px;
+	z-index: 1;
 }

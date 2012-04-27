@@ -1,5 +1,5 @@
 /*
-* Chico Mobile 0.4.2 MIT Licence
+* Chico Mobile 0.4.3 MIT Licence
 * @autor <chico@mercadolibre.com>
 * @link http://www.chico-ui.com.ar
 * @team Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle, Nicolas Brizuela
@@ -13,7 +13,7 @@
 	var ch = (function () {
 
 		var core = {
-			"version": "0.4.2"		
+			"version": "0.4.3"		
 		};
 
 		return core;
@@ -102,7 +102,7 @@ ch.mobile = ( function () {
 		
 		// Fix for Android 2.1
 		var css = $("<link>").attr({
-			"href": "src/css/chico-mobile-compatible.css?v5",
+			"href": "src/css/chico-compatible.css",
 			"rel": "stylesheet"
 		}),
 			os = MBP.ua.split(";");

@@ -15,13 +15,20 @@
 /*
 * Sprite
 */
-.ch-header-form input[type="submit"], .ch-header-form .ch-icon-search, .ch-icon-list, .ch-list li a {
+.ch-header-form input[type="submit"], .ch-header-form .ch-icon-search, .ch-icon-list, .ch-list li a, .ch-expando h3, .ch-expando h3.ch-selected {
 	background-image: url("../assets/sprite-mobile.png");
 	background-repeat: no-repeat;
 }
 .ch-list li a {
 	background-position: right -183px;
 }
+.ch-expando .ch-icon-chevron-down {
+	background-position: right -331px;
+}
+.ch-expando h3.ch-selected {
+	background-position: right -252px;
+}
+
 .ch-header-form input[type="submit"], .ch-header-form .ch-icon-search {
 	background-position: 0 3px;
 	width: 30px; height: 30px;
