@@ -1,0 +1,28 @@
+/*
+* Layer
+*/
+
+.ch-layer-content {
+	margin: 10px 5px;
+	padding: 10px;
+	background: #f4f4f4;
+	border-radius: 5px;
+	border: 1px solid #EEEEEE;
+	position: relative;
+}
+
+
+.ch-layer-content .ch-list-menu {
+	margin: -11px;
+}
+
+/* Cone */
+.ch-layer-content:before {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #F4F4F4;
+	content: "";
+	position: absolute;
+	top: -8px;
+	left: 5px;
+}

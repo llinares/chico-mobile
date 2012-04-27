@@ -13,27 +13,35 @@
 	
 	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
 	<meta name="HandheldFriendly" content="True">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<meta http-equiv="cleartype" content="on">
 	
 	<link rel="stylesheet" href="src/css/normalize.css">
-	<!--link rel="stylesheet" href="src/css/chico-mobile.css" /-->
-	<link rel="stylesheet" href="build/chico-mobile-min-0.4.0.css" />
+	<link rel="stylesheet" href="http://localhost:3000/css/min?m=true">
+	<style>
+		/*body,
+		.iphone-portrait {
+			background: #FFF url("src/assets/iphone.png") no-repeat 411px 1px;
+			margin: 133px auto 0;
+			width: 320px;
+			height: 480px;
+			overflow: auto;
+		}
 
-	<!-- Active for phones -->
-	<link rel="stylesheet" media="only screen and (min-width: 240px)" href="src/css/mobile.css" />
-	<!-- Active for tablets -->
-	<link rel="stylesheet" media="only screen and (min-width: 768px)" href="src/css/tablet.css">
+		.iphone-portrait {
 
+		}
+		body > div:first-child{
+			background: #FFFFFF;
+		}*/
+	</style>
 </head>
 
 <body>
 	<div data-page="index" role="content">
 
 		<h2>Global header</h2>
-	    <header class="ch-header">
+		<header class="ch-header">
 			<h1 class="ch-logo">
 				<img alt="MercadoLibre" src="src/assets/logo.png" />
 			</h1>
@@ -43,24 +51,24 @@
 				<!--input type="submit" value="Buscar" accesskey="b" class="icon-search"-->
 				<a href="#" title="Buscar" class="ch-icon-search"></a>
 			</form>
-				
-			<menu>
-				<li class="ch-nav"><a class="ch-icon-list" href="#navigation"><span>Menú</span></a></li>
-			</menu>
-	
-			<nav id="navigation" class="ch-hide" role="navigation">
-				<ul class="ch-list">
-					<li><a href="#">Favoritos</a></li>
-					<li><a href="#">Mi cuenta</a></li>
-					<li><a href="#">Ayuda</a></li>
-				</ul>
-			</nav>
-
+			
+			<div class="myLayer">
+				<menu>
+					<li class="ch-nav"><a class="ch-icon-list" href="#navigation"><span>Menú</span></a></li>
+				</menu>
+				<nav id="navigation" class="ch-hide" role="navigation">
+					<ul class="ch-list-menu">
+						<li><a href="#">Favoritos</a></li>
+						<li><a href="#">Mi cuenta</a></li>
+						<li><a href="#">Ayuda</a></li>
+					</ul>
+				</nav>
+			</div>
 		</header>
-		
+
 		<h2>Section Header</h2>
 		<header class="ch-header-section">
-			
+
 			<h1>Preguntas</h1>
 			
 			<nav>
@@ -75,7 +83,7 @@
 			
 			<nav>
 				<a class="ch-btn-action ch-btn-small" href="questions.html">Cancelar</a>
-				<a class="ch-btn-action ch-btn-last ch-btn-small makeAnswer" href="#">Responder</a>
+				<a class="ch-btn-action ch-btn-last ch-btn-small makeAnswer" href="#make-answer">Responder</a>
 			</nav>
 			
 		</header>		
@@ -135,11 +143,11 @@
 				<h2>Highlight Boxes</h2> 
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">adipiscing</a>. Donec sit amet purus in sapien luctus sodales <a href="#">adipiscing</a>.</p>
 			</div>
-	
+
 			<div class="ch-box">
-				<h2>Lists</h2>
+				<h2>List Menu</h2>
 				<nav>
-					<ul class="ch-list">
+					<ul class="ch-list-menu">
 				        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
 				        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
 				        <li><a href="#" data-categ-id="1540">Servicios</a></li>
@@ -150,9 +158,9 @@
 			</div>
 			
 			<div class="ch-box">
-				<h2>Lists icons</h2>
+				<h2>List Menu icons</h2>
 				<nav>
-					<ul class="ch-list">
+					<ul class="ch-list-menu">
 				        <li class="ch-icon-leaf"><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
 				        <li class="ch-icon-random"><a href="#" data-categ-id="1459">Inmuebles</a></li>
 				        <li class="ch-icon-bar-chart"><a href="#" data-categ-id="1540">Servicios</a></li>
@@ -162,29 +170,41 @@
 				</nav>
 			</div>
 
-			<div class="ch-box">
 
-				<h2>Simple Expando</h2>
-				<div class="ch-expando">
-					<h3 class="ch-icon-chevron-down">Categorias</h3>
-					<nav class="ch-hide">
-						<ul class="ch-list">
-					        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
-					        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
-					        <li><a href="#" data-categ-id="1540">Servicios</a></li>
+			<div class="ch-box">
+				<h2>Layer</h2>
+				<div class="myLayer">
+					<a href="#asd">This a Layer</a>
+					<div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus.</p>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus.</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="ch-box">
+				<h2>Expando</h2>
+				<div class="categories">
+					<h3>Categorias</h3>
+					<nav>
+						<ul class="ch-list-menu">
+							<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+							<li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+							<li><a href="#" data-categ-id="1540">Servicios</a></li>
 						</ul>
 					</nav>
 				</div>
-
 			</div>
 
 			<div class="ch-box">
-				<h2>Nested Expando</h2>
-				<ul class="ch-expando">
+				<h2>Menu</h2>
+				<ul class="myMenu">
 					<li>
-						<h3 class="ch-icon-chevron-down">Listas de navegación</h3>
-						<nav class="ch-hide">
-							<ul class="ch-list">
+						<h3>Listas de navegación</h3>
+						<nav>
+							<ul class="ch-list-menu">
 						        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
 						        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
 						        <li><a href="#" data-categ-id="1540">Servicios</a></li>
@@ -192,8 +212,8 @@
 						</nav>
 					</li>
 					<li>
-						<h3 class="ch-icon-chevron-down">Listas simples</h3>
-						<ul class="ch-hide">
+						<h3>Listas simples</h3>
+						<ul>
 							<li>A convenir con el vendedor</li>
 							<li>Capital Federal <span class="cost">$20</span></li>
 							<li>Gran Buenos Aires <span class="cost">$25</span></li>
@@ -201,9 +221,10 @@
 							<li>Resto del país <span class="cost">$55</span></li>
 						</ul>
 					</li>
+					<li><a href="#">Preguntas</a></li>
 					<li>
-						<h3 class="ch-icon-chevron-down">Contenido plano</h3>
-						<p class="ch-hide ch-expando-content">
+						<h3>Contenido plano</h3>
+						<p>
 							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 						</p>
 					</li>
@@ -223,7 +244,7 @@
 							</div>
 						</article>
 						<nav>
-							<ul class="ch-list">
+							<ul class="ch-list-menu">
 						        <li>
 						        	<a href="response.html">
 						        		<p>Hola, quisiera saber si este equipo lo podes conectar a cualquier televisor, y si ademas podes ver algun video desde un pendrive. tambien saber cuanto me costaria con envio incluido a bariloche 3 sintonizadores, 20 m de cable, una antena para exterior con sus respectivos conectores, desde ya muchas gracias.</p>
@@ -266,7 +287,37 @@
 				<p class="ch-message-attention ch-icon-warning-sign">Warning! be careful</p>
 				<p class="ch-message-ok ch-icon-ok">Everything is fine</p>
 			</div>
-			
+
+			<div class="ch-box">
+				<h2>Tags</h2>
+				<ul class="ch-filters">
+					<li>
+						<a href="#" class="ch-icon-remove">Montevideo</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">iPod touch</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">8 GB</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">iPod shuffle</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">16 GB</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">iPod nano</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">32 GB</a>
+					</li>
+					<li>
+						<a href="#" class="ch-icon-remove">64 GB</a>
+					</li>
+				</ul>
+			</div>
+
 			<div class="ch-box">
 				<h2>Pagination</h2>
 				<ul class="ch-pagination">
@@ -434,7 +485,7 @@
 		</footer>
 	</div>
 
-	<div data-page="modal" id="modal" class="ch-hide" role="content">
+	<div id="myModal" class="ch-hide">
 		<header class="ch-header-action">
 			<h1>Pregunta</h1>
 			<nav>
@@ -445,31 +496,25 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus. Vestibulum posuere purus non enim pharetra vel vulputate eros hendrerit. Ut pulvinar placerat risus quis interdum. Mauris eget tempus risus. Aenean accumsan dolor in lorem elementum ac tincidunt urna rutrum. Sed sit amet nunc velit, vitae tincidunt ipsum. Fusce mattis elementum justo, et lacinia odio pharetra a. Donec egestas imperdiet eros a interdum. Suspendisse sodales, ligula vitae pulvinar aliquam, elit justo pretium urna, ut hendrerit arcu dolor vitae ipsum.</p>
 	</div>
 	
-	<!-- Scripts -->
-	<!-- Base js for all proyects // Change the namespaces -->
-	<script src="src/js/base.js"></script>
-	<!-- Wireless devices -->
-	<script src="libs/zepto.min.js"></script>
-	<script src="libs/helper.js"></script>
-	<script src="src/js/chico-mobile.js"></script>
+	<script src="vendor/zepto.js"></script>
+	<script src="http://localhost:3000/js?m=true"></script>
 	<script>
-
 		/*--
 			Global initiation
 		--*/
-		// Iphone scale fix
-		MBP.scaleFix();
-		
-		// Hide navigation url bar
-		MBP.hideUrlBarOnLoad();
-		//ch.mobile.hideBar(window);
 
 		//FOR MOBILE
-		ch.mobile.menu($(".ch-header menu li"));
-		ch.mobile.expando($(".ch-expando h3"));
+		
 
-		// MODAL
-		ch.mobile.modal(".makeAnswer", "#modal");
+		var l = $(".myLayer").layer();
+		var a = $(".myLayer").layer();
+		var e = $(".categories").expando();
+		var m = $(".myMenu").menu();
+
+		var mo = $(".makeAnswer").modal({
+			"content": "#myModal"
+		});
+
 	</script>
 </body>
 </html>
