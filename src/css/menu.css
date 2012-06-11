@@ -52,3 +52,7 @@
 .ch-menu .ch-expando-content {
 	padding: 10px;
 }
+
+.ch-menu .ch-expando-content .ch-list-menu {
+	margin: -10px;
+}

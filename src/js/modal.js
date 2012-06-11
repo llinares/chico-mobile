@@ -74,8 +74,6 @@ ch.Modal = function (conf) {
 
 		lastScroll,
 
-		$close = $("<a class=\"ch-btn-action ch-btn-small\" data-action=\"close\">Cancelar</a>"),
-
 		hash = conf.hash || el.href.split("#")[1] || that["type"] + "-" + that.uid,
 
 		routes = {};
@@ -141,11 +139,13 @@ ch.Modal = function (conf) {
 	* @name ch.Modal#innerHide
 	* @returns itself
 	*/
-	that.innerHide = function (event) {
+	that.innerHide = function (page) {
 
 		if (!that.active) { return; }
 
-		ch.navigation.go("");
+		var page = page || "";
+
+		ch.navigation.go(page);
 
 		that.active = false;
 		
@@ -243,8 +243,8 @@ ch.Modal = function (conf) {
 	* @name ch.Modal#hide
 	* @returns itself
 	*/	
-	that["public"].hide = function(){
-		that.innerHide();
+	that["public"].hide = function(page) {
+		that.innerHide(page);
 		return that["public"];
 	};
 

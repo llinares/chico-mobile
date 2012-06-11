@@ -60,3 +60,21 @@
 	background: none;
 	border: none;
 }
+
+/* Support no-js */
+.no-js .ch-expando .ch-bellows-trigger,
+.no-js .ch-expando .ch-expando-trigger {
+  cursor: default;
+  border-bottom: 1px solid #DDD;
+  background-color: #EEE;
+  color: #333;
+}
+
+.no-js .ch-expando .ch-bellows-trigger:before,
+.no-js .ch-expando .ch-expando-trigger:before {
+	display: none;
+}
+
+.no-js .ch-expando .ch-hide {
+	display: block;
+}

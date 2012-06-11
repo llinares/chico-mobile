@@ -15,6 +15,7 @@
 * @param {String} [conf.offset] Sets the offset in pixels that component will be displaced from original position determined by points. It's specified by configuration or zero by default: "0 0".
 * @param {Boolean} [conf.cache] Enable or disable the content cache. By default, the cache is enable.
 * @param {String} [conf.closable] Sets the way (true, "button" or false) the Layer close when conf.event is set as "click". By default, the layer close true.
+* @param {String} [conf.classes] Custom Class Name
 * @returns itself
 * @example
 * // Create a new contextual layer with configuration.
@@ -56,7 +57,7 @@ ch.Layer = function (conf) {
 	conf.aria = {};
 	conf.aria.role = "tooltip";
 	conf.aria.identifier = "aria-describedby";
-
+	conf.classes = conf.classes || "ch-box ch-cone ch-points-ctcb";
 
 	that.conf = conf;
 	that.type = "layer"

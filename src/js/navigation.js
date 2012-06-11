@@ -5,6 +5,8 @@ ch.navigation = (function () {
 		history = win.history,
 		url,
 		x,
+		//current =  win.location.hash,
+		event = (win.onpopstate === null) ? "popstate" : "hashchange",
 		setSource = function () {
 			url = loc.hash.split("#")[1];
 			if (url === undefined) {	
@@ -19,10 +21,12 @@ ch.navigation = (function () {
 
 	pages[""] = [];
 
-	win.addEventListener("hashchange", setSource);
-	win.addEventListener("popstate", setSource);
+
+	win.addEventListener(event, setSource);
 
 	return {
+		//"current": current,
+
 		"add": function (routes) {
 			for (x in routes) {
 				if (x === "") {
@@ -43,6 +47,8 @@ ch.navigation = (function () {
 			if (hash === "") {
 				history.replaceState(null, "", "/");
 			}
+
+			//this.current = hash;
 		}
 	};
 }());

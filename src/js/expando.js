@@ -9,6 +9,7 @@
 * @param {Boolean} [conf.open] Shows the expando open when component was loaded. By default, the value is false.
 * @param {Boolean} [conf.icon] Shows the expando arrows icon. By default, the value is true.
 * @param {Boolean} [conf.fx] Enable or disable UI effects. By default, the effects are disable.
+* @param {String} [conf.classes] Custom Class Name
 * @returns itself
 * @example
 * // Create a new expando with configuration.
@@ -146,7 +147,7 @@ ch.Expando = function (conf) {
 	*/
 	that.configBehavior = function () {
 
-		$el.addClass("ch-"+that.type);
+		$el.addClass("ch-" + that.type);
 
 		// ARIA
 		el.setAttribute("role", "presentation");
@@ -177,7 +178,7 @@ ch.Expando = function (conf) {
 		// Content behaivor
 
 		// ClassNames
-		that.$content.addClass("ch-" + that.type + "-content ch-hide");
+		that.$content.addClass("ch-" + that.type + "-content ch-hide " + conf.classes);
 
 		// Visual configuration
 		if (conf.open) { that.innerShow(); }

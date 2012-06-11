@@ -13,79 +13,54 @@
 	
 	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
 	<meta name="HandheldFriendly" content="True">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="cleartype" content="on">
-	
+
+	<!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons --> 
+	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57x57.png" />
+	<!-- For first-generation iPad: -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+	<!-- For iPhone 4 with high-resolution Retina display: -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+	<!-- For third generation iPad Retina Display -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+
+	<!-- Styles -->
 	<link rel="stylesheet" href="src/css/normalize.css">
 	<link rel="stylesheet" href="http://localhost:3000/css/min?m=true">
+
+	<!-- Active for phones -->
+	<!--link rel="stylesheet" media="only screen and (min-width: 240px)" href="src/css/mobile.css" /-->
+	<!-- Active for tablets -->
+	<!--link rel="stylesheet" media="only screen and (min-width: 768px)" href="src/css/tablet.css"-->
+
 	<style>
-		/*body,
-		.iphone-portrait {
-			background: #FFF url("src/assets/iphone.png") no-repeat 411px 1px;
-			margin: 133px auto 0;
-			width: 320px;
-			height: 480px;
-			overflow: auto;
+		.body {
+			position: relative;
+			height: 200px;
+			border: 1px solid #CCC;
 		}
-
-		.iphone-portrait {
-
-		}
-		body > div:first-child{
-			background: #FFFFFF;
-		}*/
 	</style>
 </head>
 
 <body>
 	<div data-page="index" role="content">
 
-		<h2>Global header</h2>
+		<h2>Headers</h2>
 		<header class="ch-header">
-			<h1 class="ch-logo">
-				<img alt="MercadoLibre" src="src/assets/logo.png" />
-			</h1>
-			
-			<form class="ch-form ch-header-form" action="http://listado.mercadolibre.com.ar" method="GET" role="search">
-				<input type="search" id="query" class="search" maxlength="60" name="q" autocomplete="off">
-				<!--input type="submit" value="Buscar" accesskey="b" class="icon-search"-->
-				<a href="#" title="Buscar" class="ch-icon-search"></a>
-			</form>
-			
-			<div class="myLayer">
-				<menu>
-					<li class="ch-nav"><a class="ch-icon-list" href="#navigation"><span>Menú</span></a></li>
-				</menu>
-				<nav id="navigation" class="ch-hide" role="navigation">
-					<ul class="ch-list-menu">
-						<li><a href="#">Favoritos</a></li>
-						<li><a href="#">Mi cuenta</a></li>
-						<li><a href="#">Ayuda</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-
-		<h2>Section Header</h2>
-		<header class="ch-header-section">
-
 			<h1>Preguntas</h1>
-			
 			<nav>
-				<a class="ch-btn-back" href="http://homes-frontend.mercadolibre.com.ar">Inicio</a>
+				<a class="ch-btn-header ch-action-left" href="http://homes-frontend.mercadolibre.com.ar">Inicio</a>
 			</nav>
-			
 		</header>
-	
-		<h2>Action Header</h2>
-		<header class="ch-header-action">
+
+		<header class="ch-header-skin">
 			<h1>Pregunta</h1>
-			
 			<nav>
-				<a class="ch-btn-action ch-btn-small" href="questions.html">Cancelar</a>
-				<a class="ch-btn-action ch-btn-last ch-btn-small makeAnswer" href="#make-answer">Responder</a>
+				<a class="ch-btn-header ch-action-left" href="questions.html">Cancelar</a>
+				<a class="ch-btn-header ch-action-right makeAnswer" href="#make-answer">Responder</a>
 			</nav>
-			
 		</header>		
 		
 		<div class="ch-layout" role="main">
@@ -110,71 +85,152 @@
 
 			<div class="box clearfix">
 				<h2>Buttons</h2>
+				<p><a href="" class="ch-btn ch-btn-big">Link button</a></p>
+				<br>
 				<p><a href="" class="ch-btn">Link button</a></p>
+				<br>
 				<p><a href="" class="ch-btn ch-btn-small">Link button</a></p>
+				<br>
+				
+				<p><input type="button" class="ch-btn ch-btn-big" value="Button"></p>
 				<p><input type="button" class="ch-btn" value="Button"></p>
 				<p><input type="button" class="ch-btn ch-btn-small" value="Small button"></p>
+
+				<p><input type="button" class="ch-btn-skin ch-btn-big" value="Skin button"></p>
 				<p><input type="button" class="ch-btn-skin" value="Skin button"></p>
 				<p><input type="button" class="ch-btn-skin ch-btn-small" value="Skin button"></p>
+				
+				<p><input type="button" class="ch-btn-action ch-btn-big" value="Action button"></p>
 				<p><input type="button" class="ch-btn-action" value="Action button"></p>
 				<p><input type="button" class="ch-btn-action ch-btn-small" value="Action button"></p>
-				<p><a class="ch-btn-action ch-btn-small" href="http://homes-frontend.mercadolibre.com.ar">Action Button</a></p>
+				
 
 				<h2>Disable Buttons</h2>
-				<div><p class="ch-btn ch-btn-disabled">P button disabled</p></div>
-				<div><p class="ch-btn ch-btn-small ch-btn-disabled">P button disabled</p></div>
+				<p><a href="" class="ch-btn ch-btn-big ch-btn-disabled">Link button disabled</a></p>
+				<br>
 				<p><a href="" class="ch-btn ch-btn-disabled">Link button disabled</a></p>
+				<br>
 				<p><a href="" class="ch-btn ch-btn-small ch-btn-disabled">Link button disabled</a></p>
+				<br>
+				
+				<p><input type="button" class="ch-btn ch-btn-big ch-btn-disabled" value="Button disabled" disabled></p>
 				<p><input type="button" class="ch-btn ch-btn-disabled" value="Button disabled" disabled></p>
 				<p><input type="button" class="ch-btn ch-btn-small ch-btn-disabled" value="Small button disabled" disabled></p>
+				
+				<p><input type="button" class="ch-btn-skin ch-btn-big ch-btn-disabled" value="Skin button disabled" disabled></p>
 				<p><input type="button" class="ch-btn-skin ch-btn-disabled" value="Skin button disabled" disabled></p>
 				<p><input type="button" class="ch-btn-skin ch-btn-small ch-btn-disabled" value="Skin button disabled" disabled></p>
-				<p><input type="button" class="ch-btn-action ch-btn-disabled" disabled value="Action button"></p>
-				<p><input type="button" class="ch-btn-action ch-btn-small ch-btn-disabled" disabled value="Action button"></p>
-				<p><a class="ch-btn-action ch-btn-small ch-btn-disabled" href="http://homes-frontend.mercadolibre.com.ar">Action Button</a></p>
-			</div>
+				
+				<p><input type="button" class="ch-btn-action ch-btn-big ch-btn-disabled" disabled value="Action button disabled"></p>
+				<p><input type="button" class="ch-btn-action ch-btn-disabled" disabled value="Action button disabled"></p>
+				<p><input type="button" class="ch-btn-action ch-btn-small ch-btn-disabled" disabled value="Action button disabled"></p>
 
-			<div class="ch-box"> 
-				<h2>Boxes</h2> 
+				
+			</div>
+			<h2>Boxes</h2>
+			<div class="ch-box-container">
+				<h3>Container Box</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">adipiscing</a>. Donec sit amet purus in sapien luctus sodales <a href="#">adipiscing</a>.</p>
+			</div>
+			<div class="ch-box-lite">
+				<h3>Box Lite</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">adipiscing</a>. Donec sit amet purus in sapien luctus sodales <a href="#">adipiscing</a>.</p>
 			</div>
 			
-			<div class="ch-box-highlight">
-				<h2>Highlight Boxes</h2> 
+			<div class="ch-box">
+				<h3>Box</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">adipiscing</a>. Donec sit amet purus in sapien luctus sodales <a href="#">adipiscing</a>.</p>
 			</div>
 
-			<div class="ch-box">
-				<h2>List Menu</h2>
-				<nav>
-					<ul class="ch-list-menu">
-				        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
-				        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
-				        <li><a href="#" data-categ-id="1540">Servicios</a></li>
-				        <li>Computación</li>
-				        <li>Hogar</li>
-					</ul>
-				</nav>
-			</div>
+			<h2>Lists</h2>
+			<h3>Unstyled</h3>
+			<ul>
+				<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+				<li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+				<li><a href="#" data-categ-id="1540">Servicios</a></li>
+				<li>Computación</li>
+				<li>Hogar</li>
+			</ul>
 			
-			<div class="ch-box">
-				<h2>List Menu icons</h2>
-				<nav>
-					<ul class="ch-list-menu">
-				        <li class="ch-icon-leaf"><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
-				        <li class="ch-icon-random"><a href="#" data-categ-id="1459">Inmuebles</a></li>
-				        <li class="ch-icon-bar-chart"><a href="#" data-categ-id="1540">Servicios</a></li>
-				        <li class="ch-icon-pushpin">Computación</li>
-				        <li class="ch-icon-upload">Hogar</li>
-					</ul>
-				</nav>
+			<h3>Unordered</h3>
+			<ul class="ch-list">
+				<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+				<li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+				<li><a href="#" data-categ-id="1540">Servicios</a></li>
+				<li>Computación</li>
+				<li>Hogar</li>
+			</ul>
+			
+			<h3>Ordered</h3>
+			<ol class="ch-list">
+				<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+				<li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+				<li><a href="#" data-categ-id="1540">Servicios</a></li>
+				<li>Computación</li>
+				<li>Hogar</li>
+			</ol>
+
+			<h3>List Menu</h3>
+			<nav>
+				<ul class="ch-list-menu">
+					<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+					<li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+					<li><a href="#" data-categ-id="1540">Servicios</a></li>
+					<li>Computación</li>
+					<li>Hogar</li>
+				</ul>
+			</nav>
+
+			<h2>List Menu icons</h2>
+			<nav>
+				<ul class="ch-list-menu">
+					<li><a href="#" data-categ-id="1743" class="ch-icon-leaf">Autos, Motos y Otros</a></li>
+					<li><a href="#" data-categ-id="1459" class="ch-icon-leaf">Inmuebles</a></li>
+					<li><a href="#" data-categ-id="1540" class="ch-icon-leaf">Servicios</a></li>
+					<li class="ch-icon-leaf">Computación</li>
+					<li class="ch-icon-leaf">Hogar</li>
+				</ul>
+			</nav>
+
+			<div class="ch-box-container">
+				<h2>Transitions <span class="ch-loading">Cargando...</span></h2>
+				<div class="body">
+					<div class="ch-loading-wrap">
+						<p class="ch-loading-text">Cargando...</p>
+					</div>
+				</div>
 			</div>
 
+			<div class="ch-box-container">
+				<h2>Message Boxes</h2>
+				<p class="ch-message-help ch-icon-question-sign">Do you need any help?</p>
+				<p class="ch-message-information ch-icon-info-sign">Here's more information</p>
+				<p class="ch-message-error ch-icon-remove-sign">Oops! something went wrong</p>
+				<p class="ch-message-attention ch-icon-warning-sign">Warning! be careful</p>
+				<p class="ch-message-ok ch-icon-ok-sign">Everything is fine</p>
+			</div>
 
-			<div class="ch-box">
+			<div class="ch-box-container">
+				<h2>Tags</h2>
+				<a class="ch-tag" href="#">Chico</a>
+				<a class="ch-tag" href="#">Mobile</a>
+			</div>
+
+			<div class="ch-box-container">
+				<h2>Pagination</h2>
+				<ul class="ch-pagination">
+				  <li><a type="prev" href="#">Previous</a></li>
+				  <li><a href="#">1</a></li>
+				  <li class="ch-pagination-current"><a href="#">2</a></li>
+				  <li><a href="#">3</a></li>
+				  <li><a type="next" href="#">Next</a></li>
+				</ul>
+			</div>
+
+			<div class="ch-box-container">
 				<h2>Layer</h2>
 				<div class="myLayer">
-					<a href="#asd">This a Layer</a>
+					<p style="text-align: center"><a href="#asd">It's a Layer</a></p>
 					<div>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus.</p>
 
@@ -184,10 +240,10 @@
 			</div>
 
 
-			<div class="ch-box">
+			<div class="ch-box-container">
 				<h2>Expando</h2>
 				<div class="categories">
-					<h3>Categorias</h3>
+					<h3>Expandible</h3>
 					<nav>
 						<ul class="ch-list-menu">
 							<li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
@@ -198,136 +254,284 @@
 				</div>
 			</div>
 
-			<div class="ch-box">
-				<h2>Menu</h2>
-				<ul class="myMenu">
-					<li>
-						<h3>Listas de navegación</h3>
-						<nav>
-							<ul class="ch-list-menu">
-						        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
-						        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
-						        <li><a href="#" data-categ-id="1540">Servicios</a></li>
-							</ul>
-						</nav>
-					</li>
-					<li>
-						<h3>Listas simples</h3>
-						<ul>
-							<li>A convenir con el vendedor</li>
-							<li>Capital Federal <span class="cost">$20</span></li>
-							<li>Gran Buenos Aires <span class="cost">$25</span></li>
-							<li>Interior de Buenos Aires <span class="cost">$40</span></li>
-							<li>Resto del país <span class="cost">$55</span></li>
+
+			<h2>Menu</h2>
+			<ul class="myMenu">
+				<li>
+					<h3>List Menu</h3>
+					<nav>
+						<ul class="ch-list-menu">
+					        <li><a href="#" data-categ-id="1743">Autos, Motos y Otros</a></li>
+					        <li><a href="#" data-categ-id="1459">Inmuebles</a></li>
+					        <li><a href="#" data-categ-id="1540">Servicios</a></li>
 						</ul>
-					</li>
-					<li><a href="#">Preguntas</a></li>
-					<li>
-						<h3>Contenido plano</h3>
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</nav>
+				</li>
+				<li>
+					<h3>List</h3>
+					<ul class="ch-list">
+						<li>A convenir con el vendedor</li>
+						<li>Capital Federal <span class="cost">$20</span></li>
+						<li>Gran Buenos Aires <span class="cost">$25</span></li>
+						<li>Interior de Buenos Aires <span class="cost">$40</span></li>
+						<li>Resto del país <span class="cost">$55</span></li>
+					</ul>
+				</li>
+				<li><a href="#">Preguntas</a></li>
+				<li>
+					<h3>Plain text</h3>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</p>
+				</li>
+			</ul>
+
+			<h2>Forms</h2>
+			<form action="http://ui.ml.com:3000/test/post" class="ch-form myForm" method="POST"> 
+				<fieldset> 
+					<legend>Inputs</legend> 
+					<p class="ch-form-hint">* Required fields</p> 
+						<p class="ch-form-row"> 
+							<label for="input_ico">
+								Icon:
+							</label>
+							<span class="ch-form-ico ch-icon-ok"></span>
+							<input type="text" id="input_ico" name="input_ico" size="30" placeholder=""> 
+							
 						</p>
-					</li>
-				</ul>
+						<p class="ch-form-row"> 
+							<label for="input_button">
+								Category:
+							</label>
+							<input type="button" name="add_category" value="Add" class="ch-btn ch-btn-small ch-btn-skin"> 
+							<input type="text" id="input_button" name="input_button" size="30" placeholder=""> 
+							<span class="ch-form-hint">Add your category</span>
+						</p>
+						<p class="ch-form-row ch-form-required"> 
+							<label for="price">
+								Price:
+								<em>*</em>
+							</label>													
+							<input type="text" id="price" name="price" required="required" placeholder="1349.43">
+							<span class="ch-form-hint">Numbers and dot symbol</span>
+						</p>
+						<p class="ch-form-row ch-form-required"> 
+							<label for="email">
+								E-mail: 
+								<em>*</em>
+							</label>												
+							<input type="email" id="email" name="email" required="required" size="35" placeholder="juan.perez@chico-ui.com.ar"> 
+							<span class="ch-form-hint">It will be your login name</span> 
+						</p> 
+						<p class="ch-form-row"> 
+							<label for="email2">
+								E-mail: 
+							</label>												
+							<input type="email2" id="email2" name="email2" required="required" size="35" placeholder="juan.perez@chico-ui.com.ar"> 
+							<input type="checkbox" id="news" name="news" checked="checked" class="ch-form-checkbox-inline"> 
+							<label for="news" class="ch-label-inline">
+								Accept to receive weekly news
+							</label>
+						</p> 
+						<p class="ch-form-row"> 
+							<label for="url">
+								URL:
+							</label> 
+							<input type="url" id="url" name="url" size="60" placeholder="http://www.chico-ui.com.ar"> 
+						</p>
+						<p class="ch-form-row"> 
+							<label for="number">
+								Numeric field:
+							</label>
+							<input type="number" id="number" name="number" min="18" max="99" placeholder="30"> 
+						</p> 
+						<p class="ch-form-row"> 
+							<label for="range">
+								Numeric range:
+							</label>
+							<input type="range" id="range" name="range" min="1" max="10">
+							<span class="ch-form-hint">Between 1 to 10</span> 
+						</p>
+						<p class="ch-form-row ch-form-required ch-form-disabled"> 
+							<label for="required_disabled">
+								Required disabled: 
+								<em>*</em>
+							</label>
+							<input type="text" id="required_disabled" required="required" disabled="disabled"> 
+							<span class="ch-form-hint">It's a unknown use case</span>
+						</p> 
+						<p class="ch-form-row"> 
+							<label for="characters"> 
+								Characters: 
+							</label> 
+							<input type="text" id="characters"> 
+						</p> 
+						<p class="ch-form-row"> 
+							<label for="custom"> 
+								Custom: 
+							</label> 
+							<input type="text" id="custom" placeholder="12" size="2"> 
+						</p>
+						<p class="ch-form-row"> 
+							<label for="readonly"> 
+								Readonly: 
+							</label> 
+							<input type="text" readonly="readonly" id="readonly" value="its a readonly value"> 
+						</p>
+						<p class="ch-form-row"> 
+							<label for="double"> 
+								It's a input text with double line: 
+							</label> 
+							<input type="text" id="double"> 
+						</p>
+				</fieldset> 
+				<fieldset> 
+					<legend>Selects</legend> 
+					<p class="ch-form-row"> 
+						<label for="select1"> 
+							Common field: 
+						</label> 
+						<select id="select1"> 
+							<option value="-1">Select one...</option> 
+							<option value="1">Option 1</option> 
+							<option value="2">Option 2</option> 
+							<option value="3">Option 3</option> 
+							<option value="4">Option 4</option> 
+						</select> 
 
-			</div>
-			<div class="ch-box">
-				<h2>Questions</h2>
-				<ol class="ch-questions">
-					<li class="question">
-						<article class="ch-reference">
-							<img src="http://img1.mlstatic.com/s_MLA_v_M_f_138023041_6083.jpg">
-							<div class="bd">
-								<p class="title">Sintonizador Dtv2000 Mirá Televisión Digital Gratis! !!! Tdt</p>
-								<p class="price">$1200<sup>00</sup></p>
-								<p class="details">Finaliza en 56 dias, 7 disponibles</p>
-							</div>
-						</article>
-						<nav>
-							<ul class="ch-list-menu">
-						        <li>
-						        	<a href="response.html">
-						        		<p>Hola, quisiera saber si este equipo lo podes conectar a cualquier televisor, y si ademas podes ver algun video desde un pendrive. tambien saber cuanto me costaria con envio incluido a bariloche 3 sintonizadores, 20 m de cable, una antena para exterior con sus respectivos conectores, desde ya muchas gracias.</p>
-						        		<p class="details">MLB_TEST, hace 5 días</p>
-						        	</a>
-						        </li>
-						        <li>
-						        	<a href="response.html">
-						        		<p>hola tenes stock a la plata envias?</p>
-						        		<p class="details">MLA_TE123, hace 9 días</p>
-						        	</a>
-						        </li>
-							</ul>
-						</nav>	
-					</li>
-				</ol>
-			</div>
-			
-			<div class="ch-box">
-				<h2>Forms</h2>
-				<form id="responseQuestion" class="ch-form" action="" method="post">
-					<p class="question">hola tenes stock a la plata envias?</p>
-					<textarea class cols="44" rows="2" name="question" placeholder="Escribe tu respuesta..."></textarea>
-				</form>
-			</div>
+					</p> 
+					<p class="ch-form-row ch-form-required"> 
+						<label for="select2"> 
+							Rquired: <em>*</em> 
+						</label> 
+						<select id="select2" required="required" pattern="[^-1]"> 
+							<option value="">Select one...</option> 
+							<option value="1">Option 1</option> 
+							<option value="2">Option 2</option> 
+							<option value="3">Option 3</option> 
+							<option value="4">Option 4</option> 
+						</select> 
+					</p> 
+					<p class="ch-form-row ch-form-required ch-form-disabled"> 
+						<label for="select3" class="required disabled"> 
+							Required disabled: <em>*</em>
+						</label> 
+						<select id="select3" required="required" disabled="disabled"> 
+							<option value="">Select one...</option> 
+							<option value="1">Option 1</option> 
+							<option value="2">Option 2</option> 
+							<option value="3">Option 3</option> 
+							<option value="4">Option 4</option> 
+						</select> 
+					</p> 
+					<p class="ch-form-row ch-form-disabled"> 
+						<label for="select4"> 
+							Disabled: 
+						</label> 
+						<select id="select4" disabled="disabled"> 
+							<option value="0">Select one...</option> 
+							<option value="1">Option 1</option> 
+							<option value="2">Option 2</option> 
+							<option value="3">Option 3</option> 
+							<option value="4">Option 4</option> 
+						</select> 
+					</p> 
+				</fieldset> 
+				
+				<fieldset> 
+					<h4 class="ch-form-subtitle">Unique checkbox:</h4>
+					<p class="ch-form-options ch-form-required check2 ch-box"> 
+						<input type="checkbox" value="alpha" id="check4a" name="version4" required="required"> 
+						<label for="check4a"> 
+							Unique checkbox
+						</label>
+					</p>
+				</fieldset>
+				<fieldset> 
+					<legend>Checkboxs</legend> 
+					<ul class="ch-form-options ch-list-menu">
+						<li>
+							<input type="checkbox" value="alpha" id="check1a" name="version1a" required="required"> 
+							<label for="check1a"> 
+								Alpha 
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" value="beta" id="check1b" name="version1b"> 
+							<label for="check1b"> 
+								Beta 
+							</label>
+						</li>
+					</ul>
+				</fieldset>
 
-			<div class="ch-box">
-				<h2>Transitions</h2>
-				<div class="ch-loading"></div>
-				<div class="ch-loading-wrap">
-					<div class="ch-loading">Cargando...</div>
-				</div>
-			</div>
+				<fieldset> 
+					<legend>Radios</legend> 
+					<ul class="ch-form-options ch-list-menu">
+						<li>
+							<input type="radio" value="alpha" id="radio1a" name="version1a" required="required"> 
+							<label for="radio1a"> 
+								Alpha 
+							</label>
+						</li>
+						<li>
+							<input type="radio" value="beta" id="radio1b" name="version1a"> 
+							<label for="radio1b"> 
+								Beta 
+							</label>
+						</li>
+					</ul>
+				</fieldset>
 
-			<div class="ch-box">
-				<h2>Message Boxes</h2>
-				<p class="ch-message-help ch-icon-question-sign">Do you need any help?</p>
-				<p class="ch-message-information ch-icon-info-sign">Here's more information</p>
-				<p class="ch-message-error ch-icon-remove">Oops! something went wrong</p>
-				<p class="ch-message-attention ch-icon-warning-sign">Warning! be careful</p>
-				<p class="ch-message-ok ch-icon-ok">Everything is fine</p>
-			</div>
+				<fieldset> 
+					<legend>Legend of required group <em>*</em></legend>
+					<ul class="ch-form-options ch-list-menu">
+						<li>
+							<input type="checkbox" value="alpha" id="check2a" name="version2a" required="required"> 
+							<label for="check2a"> 
+								Alpha 
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" value="beta" id="check2b" name="version2b"> 
+							<label for="check2b"> 
+								Beta 
+							</label>
+						</li>
+					</ul>
+				</fieldset>
+				
+				<fieldset> 
+					<legend>Textarea</legend> 
+					<p class="ch-form-row"> 
+						<label for="textarea1"> 
+							Textarea: 
+						</label> 
+						<textarea id="textarea1"></textarea> 
+					</p> 
+						
+					<p class="ch-form-row ch-form-required"> 
+						<label for="textarea2"> 
+							Required: <em>*</em>
+						</label> 
+						<textarea id="textarea2" required="required"></textarea> 
+					</p> 
 
-			<div class="ch-box">
-				<h2>Tags</h2>
-				<ul class="ch-filters">
-					<li>
-						<a href="#" class="ch-icon-remove">Montevideo</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">iPod touch</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">8 GB</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">iPod shuffle</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">16 GB</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">iPod nano</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">32 GB</a>
-					</li>
-					<li>
-						<a href="#" class="ch-icon-remove">64 GB</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="ch-box">
-				<h2>Pagination</h2>
-				<ul class="ch-pagination">
-				  <li><a type="prev" href="#">Previous</a></li>
-				  <li><a href="#">1</a></li>
-				  <li class="ch-current"><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a type="next" href="#">Next</a></li>
-				</ul>
-			</div>
+					<p class="ch-form-row ch-form-required ch-form-disabled"> 
+						<label for="textarea3"> 
+							Required disabled: <em>*</em> 
+						</label> 
+						<textarea id="textarea3" required="required" disabled="disabled"></textarea> 
+					</p>
+					
+					<p class="ch-form-row ch-form-disabled"> 
+						<label for="textarea4"> 
+							Disabled: 
+						</label> 
+						<textarea id="textarea4" disabled="disabled"></textarea> 
+					</p> 
+				</fieldset>
+			</form>
 
 			<div class="box">
 				<h2>Icons</h2>
@@ -360,7 +564,7 @@
 	                <li class="ch-icon-inbox">ch-icon-inbox</li>
 	                <li class="ch-icon-play-circle">ch-icon-play-circle</li>
 	                <li class="ch-icon-repeat">ch-icon-repeat</li>
-	                 <li class="ch-icon-refresh">ch-icon-refresh</li>
+					<li class="ch-icon-refresh">ch-icon-refresh</li>
 	                <li class="ch-icon-list-alt">ch-icon-list-alt</li>
 	                <li class="ch-icon-lock">ch-icon-lock</li>
 	                <li class="ch-icon-flag">ch-icon-flag</li>
@@ -474,22 +678,13 @@
 			</div>
 
 		</div>
-
-		<footer class="ch-footer">
-			<p class="nav-footer">
-				<a href="#" title="Ingresa a Mercadolibre">Ingresar</a>
-				<!--USER_TEST <a href="#">(Salir)</a-->
-			</p>
-			<p class="copy">© 2012 MercadoLibre S.R.L.</p>
-			<p class="version"><a href="http://www.mercadolibre.com.ar">Version clásica</a></p>
-		</footer>
 	</div>
 
 	<div id="myModal" class="ch-hide">
-		<header class="ch-header-action">
+		<header class="ch-header-skin">
 			<h1>Pregunta</h1>
 			<nav>
-				<a class="ch-btn-action ch-btn-small ch-btn-last" href="#">Responder</a>
+				<a class="ch-btn-header ch-action-right" href="#test">Test</a>
 			</nav>
 		</header>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus. Vestibulum posuere purus non enim pharetra vel vulputate eros hendrerit. Ut pulvinar placerat risus quis interdum. Mauris eget tempus risus. Aenean accumsan dolor in lorem elementum ac tincidunt urna rutrum. Sed sit amet nunc velit, vitae tincidunt ipsum. Fusce mattis elementum justo, et lacinia odio pharetra a. Donec egestas imperdiet eros a interdum. Suspendisse sodales, ligula vitae pulvinar aliquam, elit justo pretium urna, ut hendrerit arcu dolor vitae ipsum.</p>
@@ -513,6 +708,13 @@
 
 		var mo = $(".makeAnswer").modal({
 			"content": "#myModal"
+		});
+
+		ch.navigation.add({
+			"test": function () {
+				mo.hide("test");
+				alert("pepe");
+			}
 		});
 
 	</script>

@@ -12,13 +12,16 @@ var win = exports,
 	},
 	body = qs("body"),
 	html = qs("html"),
+	$html = $("html"),
 	clone = function (o) {
-		var obj = {},
+		var copy = {},
 			x;
 		for (x in o) {
-			obj[x] = o[x];
+			if (hasOwn(o, x)) {
+				copy[x] = o[x];
+			}
 		}
-		return obj;
+		return copy;
 	},
 	/**
 	* Extend is a method that allows you to extend Chico or other objects with new members.
@@ -62,9 +65,23 @@ var win = exports,
 		}
 		return d;
 	},
-	hasOwn = function (o, property) {
-		return Object.prototype.hasOwnProperty.call(o, property);
-	},
+	isArray = (function () {
+
+		if (Array.hasOwnProperty("isArray")) {
+			return Array.isArray;
+		}
+
+		return function (o) {
+			return Object.prototype.toString.apply(o) === "[object Array]";
+		};
+	}()),
+	hasOwn = (function () {
+		var hOP = Object.prototype.hasOwnProperty;
+
+		return function (o, property) {
+			return hOP.call(o, property);
+		};
+	}()),
 	isTag = function (string) {
 		return (/<([\w:]+)/).test(string);
 	},

@@ -65,6 +65,8 @@ var ch = {
 		ch.hideUrlBarOnLoad();
 		// Prevent zoom onfocus
 		ch.preventZoom();
+		// Remove no-js classname
+		$html.removeClass("no-js");
 	},
 
 	/**
