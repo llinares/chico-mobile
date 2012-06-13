@@ -65,10 +65,7 @@ ch.Expando = function (conf) {
 			that.$content.toggleClass("ch-hide");
 
 			// Arrows icons
-			if (conf.icon) {
-				that.$trigger.toggleClass("ch-icon-chevron-up");
-				that.$trigger.toggleClass("ch-icon-chevron-down");
-			}
+			/*if (conf.icon) { }*/
 
 			return that;
 		};
@@ -161,16 +158,10 @@ ch.Expando = function (conf) {
 		// Trigger behaivor
 		// ClassNames
 		
-
 		that.$trigger.addClass("ch-" + that.type + "-trigger");
 
-		/*if (that.$trigger[0].tagName !== "A") {
-			that.$trigger.html($("<a href=\"#" + "ch-" + that["type"] + "-" + that.uid + "\">").html(that.$trigger.html()));	
-		}*/
 
-		if (conf.icon) {
-			that.$trigger.addClass("ch-icon-chevron-down");
-		}
+		/*if (conf.icon) { }*/
 
 		// Events
 		that.trigger.addEventListener("click", function (event) { event.preventDefault(); that.innerShow(event); });
