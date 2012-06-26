@@ -27,6 +27,7 @@
 	text-shadow: 0 1px 1px #FFF;
 	padding: 15px 10px;
 	background: #F4F4F4;
+	font-size: 1em;
 }
 
 .ch-expando-trigger:after {
