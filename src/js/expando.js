@@ -1,29 +1,23 @@
 /**
-* Expando is a Widget.
+* Expando lets you show or hide the content. Expando needs a pair: the title and the content related to that title.
 * @name Expando
 * @class Expando
 * @augments ch.Widget
-* @standalone
 * @memberOf ch
 * @param {Object} [conf] Object with configuration properties.
 * @param {Boolean} [conf.open] Shows the expando open when component was loaded. By default, the value is false.
-* @param {Boolean} [conf.icon] Shows the expando arrows icon. By default, the value is true.
 * @param {Boolean} [conf.fx] Enable or disable UI effects. By default, the effects are disable.
-* @param {String} [conf.classes] Custom Class Name
 * @returns itself
+* @factorized
+* @see ch.Widget
+* @exampleDescription Create a new expando without configuration.
 * @example
-* // Create a new expando with configuration.
-* var me = $(".example").expando({
-*     "open": true,
-*     "fx": true
+* var widget = $(".example").expando();
+* @exampleDescription Create a new expando with configuration.
+* @example
+* var widget = $(".example").expando({
+*     "open": true
 * });
-* @example
-* // Create a new expando without configuration.
-* var me = $(".example").expando();
-*/
-
-/**
-* Expando Class
 */
 ch.Expando = function (conf) {
 
@@ -34,23 +28,52 @@ ch.Expando = function (conf) {
 	* @type object
 	*/
 	var that = this,
+
+		/**
+		* Reference to Parent Class.
+		* @private
+		* @name ch.Expando#parent
+		* @type object
+		*/
 		parent,
+
+		/**
+		* Reference to configuration object.
+		* @private
+		* @name ch.Expando#conf
+		* @type object
+		*/
 		conf = clone(conf) || {};
 
-	conf.icon = hasOwn(conf, "icon") ? conf.icon : true;
+	//conf.icon = hasOwn(conf, "icon") ? conf.icon : true;
 	conf.open = conf.open || false;
 
 	that.conf = conf;
 
-	// Inherits
+/**
+*	Inheritance
+*/
 	// Borrow a constructor and return a parent
 	parent = ch.inherit(ch.Widget, that);
 
 /**
 *  Private Members
 */
+
+	/**
+	* Private reference to the element
+	* @privated
+	* @name ch.Expando#el
+	* @type HTMLElement
+	*/
 	var el = that.el,
 
+		/**
+		* Private reference to the Zepto element
+		* @privated
+		* @name ch.Expando#$el
+		* @type Zepto Object
+		*/
 		$el = that.$el,
 
 		/**
@@ -77,19 +100,33 @@ ch.Expando = function (conf) {
 	/**
 	* The component's trigger.
 	* @protected
-	* @name ch.Expando#$trigger
-	* @type jQuery
+	* @name ch.Expando#trigger
+	* @type HTMLElement
 	*/
 	that.trigger = el.firstElementChild;
+
+	/**
+	* The component's trigger.
+	* @protected
+	* @name ch.Expando#$trigger
+	* @type Zepto Object
+	*/
 	that.$trigger = $(that.trigger);
 	
 	/**
 	* The component's content.
 	* @protected
-	* @name ch.Expando#$content
-	* @type DOMElement
+	* @name ch.Expando#content
+	* @type HTMLElement
 	*/
 	that.content = el.lastElementChild;
+
+	/**
+	* The component's content.
+	* @protected
+	* @name ch.Expando#$content
+	* @type Zepto Object
+	*/
 	that.$content = $(that.content);
 
 	/**
@@ -110,6 +147,20 @@ ch.Expando = function (conf) {
 		// ARIA attr
 		that.trigger.setAttribute("aria-expanded", "true");
 		that.content.setAttribute("aria-hidden", "false");
+
+
+		/**
+		* Triggers when component is visible.
+		* @name ch.Expando#show
+		* @event
+		* @public
+		* @exampleDescription It change the content when the component was shown.
+		* @example
+		* widget.on("show",function () {
+		*	this.content("Some new content");
+		* });
+		*/
+		that.emit("show");
 
 		return that;
 	};
@@ -133,11 +184,25 @@ ch.Expando = function (conf) {
 		that.trigger.setAttribute("aria-expanded", "false");
 		that.content.setAttribute("aria-hidden", "true");
 
+
+		/**
+		* Triggers when component is not longer visible.
+		* @name ch.Expando#hide
+		* @event
+		* @public
+		* @exampleDescription When the component hides show other component.
+		* @example
+		* widget.on("hide",function () {
+		*	otherComponent.show();
+		* });
+		*/
+		that.emit("hide");
+
 		return that;
 	};
 
 	/**
-	* Create component's layout and add behaivor
+	* Create component's behaivor
 	* @protected
 	* @function
 	* @name ch.Expando#configBehavior
@@ -157,7 +222,6 @@ ch.Expando = function (conf) {
 
 		// Trigger behaivor
 		// ClassNames
-		
 		that.$trigger.addClass("ch-" + that.type + "-trigger");
 
 
@@ -182,25 +246,41 @@ ch.Expando = function (conf) {
 */
  
 	/**
-	* The component's instance unique identifier.
-	* @public
-	* @name ch.Expando#uid
-	* @type number
-	*/
+	* @borrows ch.Widget#uid as ch.Expando#uid
+	*/	
 	
 	/**
-	* The element reference.
-	* @public
-	* @name ch.Expando#element
-	* @type HTMLElement
+	* @borrows ch.Widget#el as ch.Expando#el
 	*/
-	
+
 	/**
-	* The component's type.
-	* @public
-	* @name ch.Expando#type
-	* @type string
+	* @borrows ch.Widget#type as ch.Expando#type
 	*/
+
+	/**
+	* @borrows ch.Widget#emit as ch.Expando#emit
+	*/
+
+	/**
+	* @borrows ch.Widget#on as ch.Expando#on
+	*/
+
+	/**
+	* @borrows ch.Widget#once as ch.Expando#once
+	*/
+
+	/**
+	* @borrows ch.Widget#off as ch.Expando#off
+	*/
+
+	/**
+	* @borrows ch.Widget#offAll as ch.Expando#offAll
+	*/
+
+	/**
+	* @borrows ch.Widget#setMaxListeners as ch.Expando#setMaxListeners
+	*/
+
 	
 	/**
 	* Shows component's content.
@@ -233,13 +313,13 @@ ch.Expando = function (conf) {
 	that.configBehavior();
 
 	/**
-	* Emit when the component is ready to use.
-	* @name ch.Layer#ready
+	* Emits an event when the component is ready to use.
+	* @name ch.Expando#ready
 	* @event
 	* @public
 	* @example
-	* // Following the first example, using 'me' as layer's instance controller:
-	* me.on("ready",function () {
+	* // Following the first example, using 'me' as expando's instance controller:
+	* widget.on("ready",function () {
 	*	this.show();
 	* });
 	*/

@@ -6,11 +6,11 @@
 	"templates": {
 		"js": {
 			"min": "/* Chico Mobile v<version> chico-ui.com.ar | chico-ui.com.ar/license */\n;(function(exports, $){\"use strict\";<code>;exports.chico = exports.ch = ch;ch.init();})(window, $);",
-			"full": "/*\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle.\n */\n\n;(function (exports, $) {\n\n\"use strict\";\n\n<code>\n\nexports.chico = exports.ch = ch;\n\nch.init();\n\n})(window, $);"
+			"full": "/*\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz.\n */\n\n;(function (exports, $) {\n\n\"use strict\";\n\n<code>\n\nexports.chico = exports.ch = ch;\n\nch.init();\n\n})(window, $);"
 		},
 		"css": {
 			"min": "/*! Chico Mobile v<version> chico-ui.com.ar | chico-ui.com.ar/license */\n<code>",
-			"full": "/*!\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle.\n */\n\n<code>"
+			"full": "/*!\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz.\n */\n\n<code>"
 		}
 	},
 	"packages": [{
@@ -19,5 +19,5 @@
 		"min": false
 	}],
 	"dependencies": "zepto",
-	"filesOrder": "polyfills,helpers,core,events,navigation,content,factory,widget,header,form,modal,expando,menu,layer"
+	"filesOrder": "helpers,core,icon,header,button,box,list,transition,tag,pagination,table,events,navigation,content,factory,widget,form,modal,expando,menu,layer"
 }

@@ -1,11 +1,19 @@
-/**
-* Chico Factory.
+/** 
+* Creational patterns to create UI Components
+* @name factory
+* @class Factory
+* @static
+* @param o Configuration Object
+* @returns {Object}
+* @memberOf ch
 */
+// TODO: Always it should receive a conf object as parameter (see Multiple component)
+// TODO: Try to deprecate .and() method on Validator
 ch.factory = function (klass) {
-	// Get the library xui or zepto/jquery
+	// Sets the klass name
 	var name = klass.toLowerCase(),
 
-		// Creats a new instance
+		// Creates a new instance
 		create = function (e, conf) {
 
 			var context = {
