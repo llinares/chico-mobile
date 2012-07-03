@@ -1,38 +1,28 @@
 /**
-* Modal is a Widget.
+* Modal is a centered floated window with a dark gray dimmer background. Modal lets you handle its size, positioning and content.
 * @name Modal
 * @class Modal
-* @augments ch.Floats
-* @standalone
+* @augments ch.Widget
 * @memberOf ch
 * @param {Object} [conf] Object with configuration properties.
 * @param {String} [conf.content] Sets content by: static content, DOM selector or URL. By default, the content is the href attribute value  or form's action attribute.
-* @param {Number || String} [conf.width] Sets width property of the component's layout. By default, the width is "500px".
-* @param {Number || String} [conf.height] Sets height property of the component's layout. By default, the height is elastic.
-* @param {Boolean} [conf.fx] Enable or disable UI effects. By default, the effects are enable.
-* @param {Boolean} [conf.cache] Enable or disable the content cache. By default, the cache is enable.
-* @param {String} [conf.closable] Sets the way (true, "button" or false) the Modal close. By default, the modal close true.
 * @returns itself
-* @see ch.Tooltip
-* @see ch.Layer
-* @see ch.Zoom
+* @factorized
+* @see ch.Widget
+* @see ch.Navigation
+* @exampleDescription Create a new modal window triggered by an anchor with a class name 'example'.
 * @example
-* // Create a new modal window with configuration.
-* var me = $("a.example").modal({
-*     "content": "Some content here!",
-*     "width": "500px",
-*     "height": 350,
-*     "cache": false,
-*     "fx": false
+* var widget = $("a.example").modal();
+* @exampleDescription Create a new modal window triggered by form.
+* @example
+* var widget = $("form").modal();
+* @exampleDescription Create a new modal window with configuration.
+* @example
+* var widget = $("a.example").modal({
+*     "content": "#someDivHidden"
 * });
-* @example
-* // Create a new modal window triggered by an anchor with a class name 'example'.
-* var me = $("a.example").modal();
-* @example
-* // Now 'me' is a reference to the modal instance controller.
-* // You can set a new content by using 'me' like this:
-* me.content("http://content.com/new/content");
 */
+
 ch.Modal = function (conf) {
 
 	/**
@@ -42,20 +32,50 @@ ch.Modal = function (conf) {
 	* @type object
 	*/
 	var that = this,
+
+		/**
+		* Reference to Parent Class.
+		* @private
+		* @name ch.Modal#parent
+		* @type object
+		*/
 		parent,
+
+		/**
+		* Reference to configuration object.
+		* @private
+		* @name ch.Modal#conf
+		* @type object
+		*/
 		conf = clone(conf) || {};
 
 	that.conf = conf;
 
-	// Inherits
+/**
+*	Inheritance
+*/
 	// Borrow a constructor and return a parent
 	parent = ch.inherit(ch.Widget, that);
 
 /**
 *  Private Members
 */
+
+	/**
+	* Private reference to the element
+	* @privated
+	* @name ch.Modal#el
+	* @type HTMLElement
+	*/
 	var el = that.el,
 
+
+		/**
+		* Private reference to the Zepto element
+		* @privated
+		* @name ch.Modal#$el
+		* @type Zepto Object
+		*/
 		$el = that.$el,
 
 		/**
@@ -70,12 +90,29 @@ ch.Modal = function (conf) {
 			return that;
 		},
 
+
+		/**
+		* Private reference to the index page
+		* @privated
+		* @name ch.Modal#$index
+		* @type Zepto Object
+		*/
 		$index = $("div[data-page=index]"),
 
-		lastScroll,
-
+		/**
+		* Hash name
+		* @privated
+		* @name ch.Modal#hash
+		* @type String
+		*/
 		hash = conf.hash || el.href.split("#")[1] || that["type"] + "-" + that.uid,
 
+		/**
+		* Routes maps
+		* @privated
+		* @name ch.Modal#routes
+		* @type Object
+		*/
 		routes = {};
 
 
@@ -84,13 +121,19 @@ ch.Modal = function (conf) {
 */
 
 
+	/**
+	* The component's source.
+	* @protected
+	* @name ch.Modal#$source
+	* @type Zepto Object
+	*/
 	that.source = $(conf.content).removeClass("ch-hide");
 
 	/**
 	* The component's content.
 	* @protected
 	* @name ch.Modal#$content
-	* @type DOMElement
+	* @type Zepto Object
 	*/
 	that.$content = $("<div class=\"ch-modal-content\">").append(that.source);
 
@@ -98,7 +141,7 @@ ch.Modal = function (conf) {
 	* The component's container
 	* @protected
 	* @name ch.Modal#$container
-	* @type DOMElement
+	* @type Zepto Object
 	*/
 	that.$container = (function () {
 		var $container = $("<div aria-hidden=\"true\" class=\"ch-modal ch-hide\" id=\"ch-" + that["type"] + "-" + that.uid +"\" role=\"dialog\" data-page=\"ch-modal\">");
@@ -127,8 +170,6 @@ ch.Modal = function (conf) {
 
 		that.$container.removeClass("ch-hide");
 
-		// ARIA attr
-
 		return that;
 	};
 
@@ -154,8 +195,6 @@ ch.Modal = function (conf) {
 		$index.removeClass("ch-hide");
 
 
-		// ARIA attr
-
 		return that;
 	};
 
@@ -172,7 +211,6 @@ ch.Modal = function (conf) {
 
 		// Trigger behaivor
 		// ClassNames
-
 
 		// Events
 		el.addEventListener("click", function (event) {
@@ -191,39 +229,53 @@ ch.Modal = function (conf) {
 
 		// Visual configuration
 		if (conf.open) { that.innerShow(); }
-		
+
 		// Hash navigation
 		routes[""] = that.innerHide;
 		routes[hash] = that.innerShow;
 		ch.navigation.add(routes);
 	};
 
-
 /**
 *  Public Members
 */
  
 	/**
-	* The component's instance unique identifier.
-	* @public
-	* @name ch.Modal#uid
-	* @type number
-	*/
+	* @borrows ch.Widget#uid as ch.Modal#uid
+	*/	
 	
 	/**
-	* The element reference.
-	* @public
-	* @name ch.Modal#element
-	* @type HTMLElement
+	* @borrows ch.Widget#el as ch.Modal#el
 	*/
-	
+
 	/**
-	* The component's type.
-	* @public
-	* @name ch.Modal#type
-	* @type string
+	* @borrows ch.Widget#type as ch.Modal#type
 	*/
-	
+
+	/**
+	* @borrows ch.Widget#emit as ch.Modal#emit
+	*/
+
+	/**
+	* @borrows ch.Widget#on as ch.Modal#on
+	*/
+
+	/**
+	* @borrows ch.Widget#once as ch.Modal#once
+	*/
+
+	/**
+	* @borrows ch.Widget#off as ch.Modal#off
+	*/
+
+	/**
+	* @borrows ch.Widget#offAll as ch.Modal#offAll
+	*/
+
+	/**
+	* @borrows ch.Widget#setMaxListeners as ch.Modal#setMaxListeners
+	*/
+
 	/**
 	* Shows component's content.
 	* @public
@@ -231,7 +283,7 @@ ch.Modal = function (conf) {
 	* @name ch.Modal#show
 	* @returns itself
 	*/
-	that["public"].show = function(){
+	that["public"].show = function () {
 		that.innerShow();
 		return that["public"];
 	};
@@ -243,7 +295,7 @@ ch.Modal = function (conf) {
 	* @name ch.Modal#hide
 	* @returns itself
 	*/	
-	that["public"].hide = function(page) {
+	that["public"].hide = function (page) {
 		that.innerHide(page);
 		return that["public"];
 	};
@@ -255,13 +307,13 @@ ch.Modal = function (conf) {
 	that.configBehavior();
 
 	/**
-	* Emit when the component is ready to use.
+	* Emits an event when the component is ready to use.
 	* @name ch.Modal#ready
 	* @event
 	* @public
 	* @example
-	* // Following the first example, using 'me' as layer's instance controller:
-	* me.on("ready",function () {
+	* // Following the first example, using 'me' as modal's instance controller:
+	* widget.on("ready",function () {
 	*	this.show();
 	* });
 	*/

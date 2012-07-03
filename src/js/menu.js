@@ -1,5 +1,5 @@
 /**
-* Menu is a Widget.
+* Menu lets you organize the links by categories.
 * @name Menu
 * @class Menu
 * @augments ch.Widget
@@ -7,21 +7,18 @@
 * @memberOf ch
 * @param {Object} [conf] Object with configuration properties.
 * @param {Number} [conf.selected] Selects a child that will be open when component was loaded.
-* @param {Boolean} [conf.fx] Enable or disable UI effects. By default, the effects are disable.
 * @returns itself
+* @factorized
+* @see ch.Expando
+* @see ch.Widget
+* @exampleDescription Create a new menu without configuration.
 * @example
-* // Create a new menu with configuration.
-* var me = $(".example").menu({
-*     "selected": 2,
-*     "fx": true
+* var widget = $(".example").menu();
+* @exampleDescription Create a new menu with configuration.
+* @example
+* var widget = $(".example").menu({
+*     "selected": 2
 * });
-* @example
-* // Create a new menu without configuration.
-* var me = $(".example").menu();
-*/
-
-/**
-* Menu Class
 */
 ch.Menu = function (conf) {
 
@@ -32,30 +29,60 @@ ch.Menu = function (conf) {
 	* @type object
 	*/
 	var that = this,
+
+		/**
+		* Reference to Parent Class.
+		* @private
+		* @name ch.Menu#parent
+		* @type object
+		*/
 		parent,
+
+		/**
+		* Reference to configuration object.
+		* @private
+		* @name ch.Menu#conf
+		* @type object
+		*/
 		conf = clone(conf) || {};
 
 	conf.icon = hasOwn(conf, "icon") ? conf.icon : true;
 
 	that.conf = conf;
 
-	// Inherits
+/**
+*	Inheritance
+*/
 	// Borrow a constructor and return a parent
 	parent = ch.inherit(ch.Widget, that);
 
 /**
 *  Private Members
 */
+
+	/**
+	* Private reference to the element
+	* @privated
+	* @name ch.Menu#el
+	* @type HTMLElement
+	*/
 	var el = that.el,
 
+		/**
+		* Private reference to the Zepto element
+		* @privated
+		* @name ch.Menu#$el
+		* @type Zepto Object
+		*/
 		$el = that.$el,
+
 		/**
 		* Indicates witch child is opened
 		* @private
 		* @name ch.Menu#selected
 		* @type number
 		*/
-		selected = conf.selected - 1,
+		selected = (conf.selected) ? conf.selected - 1 : undefined,
 
 		/**
 		* Opens specific Expando child and optionally grandson
@@ -86,10 +113,10 @@ ch.Menu = function (conf) {
 */
 
 	/**
-	* The component's trigger.
+	* The component's triggers.
 	* @protected
-	* @name ch.Navs#$trigger
-	* @type Array
+	* @name ch.Menu#trigger
+	* @type HTMLElement
 	*/
 	that.triggers = el.children;
 
@@ -149,7 +176,7 @@ ch.Menu = function (conf) {
 	* Create component's layout and add behaivor
 	* @protected
 	* @function
-	* @name ch.Navs#configBehavior
+	* @name ch.Menu#configBehavior
 	*/
 	that.configBehavior = function () {
 
@@ -166,34 +193,60 @@ ch.Menu = function (conf) {
 */
  
 	/**
-	* The component's instance unique identifier.
-	* @public
-	* @name ch.Menu#uid
-	* @type number
-	*/
+	* @borrows ch.Widget#uid as ch.Menu#uid
+	*/	
 	
 	/**
-	* The element reference.
-	* @public
-	* @name ch.Menu#element
-	* @type HTMLElement
+	* @borrows ch.Widget#el as ch.Menu#el
 	*/
-	
+
 	/**
-	* The component's type.
-	* @public
-	* @name ch.Menu#type
-	* @type string
+	* @borrows ch.Widget#type as ch.Menu#type
 	*/
+
+	/**
+	* @borrows ch.Widget#emit as ch.Menu#emit
+	*/
+
+	/**
+	* @borrows ch.Widget#on as ch.Menu#on
+	*/
+
+	/**
+	* @borrows ch.Widget#once as ch.Menu#once
+	*/
+
+	/**
+	* @borrows ch.Widget#off as ch.Menu#off
+	*/
+
+	/**
+	* @borrows ch.Widget#offAll as ch.Menu#offAll
+	*/
+
+	/**
+	* @borrows ch.Widget#setMaxListeners as ch.Menu#setMaxListeners
+	*/
+
 
 	/**
 	* Select a specific children.
 	* @public
 	* @name ch.Menu#select
 	* @function
+	* @param {Number} [item] The number of the item to be selected
 	*/
-	that["public"].select = function (child) {
-		select(child);
+	that["public"].select = function (item) {
+		// Getter
+		if (!item) {
+			if (isNaN(selected)) {
+				return "";
+			}
+			return selected + 1;
+		}
+
+		// Setter
+		select(item);
 
 		return that["public"];
 	};
@@ -208,11 +261,11 @@ ch.Menu = function (conf) {
 
 	/**
 	* Emit when the component is ready to use.
-	* @name ch.Layer#ready
+	* @name ch.Menu#ready
 	* @event
 	* @public
 	* @example
-	* // Following the first example, using 'me' as layer's instance controller:
+	* // Following the first example, using 'me' as menu's instance controller:
 	* me.on("ready",function () {
 	*	this.show();
 	* });

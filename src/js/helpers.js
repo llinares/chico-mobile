@@ -1,18 +1,83 @@
 /**
-* Chico Helpers: References and commons functions.
+* Private reference to the window obecjt
+* @private
+* @name win
+* @type Window object
 */
 var win = exports,
-	browser = exports.navigator,
-	doc = exports.document,
+
+	/**
+	* Private reference to the navigator object
+	* @private
+	* @name browser
+	* @type Navigator Object
+	*/
+	browser = win.navigator,
+
+	/**
+	* Private reference to the document object
+	* @private
+	* @name doc
+	* @type Document Object
+	*/
+	doc = win.document,
+
+	/**
+	* Returns the first element within the document that matches the specified group of selectors.
+	* @private
+	* @name qa
+	* @type function
+	* @param {String} [selector] A string containing one or more CSS selectors separated by commas.
+	* @returns HTMLElement Object
+	*/
 	qs = function (selector) {
 		return doc.querySelector(selector);
 	},
+
+	/**
+	* Returns a list of the elements within the document that match the specified group of selectors.
+	* @private
+	* @name qsa
+	* @type function
+	* @param {String} [selector] A string containing one or more CSS selectors separated by commas.
+	* @returns NodeList
+	*/
 	qsa = function (selector) {
 		return doc.querySelectorAll(selector);
 	},
+
+	/**
+	* Private reference to the body element
+	* @private
+	* @name body
+	* @type HTMLBodyElement
+	*/
 	body = qs("body"),
+
+	/**
+	* Private reference to the html element
+	* @private
+	* @name html
+	* @type HTMLElement
+	*/
 	html = qs("html"),
+
+	/**
+	* Private reference to the html zepto object
+	* @private
+	* @name $html
+	* @type Zepto Object
+	*/
 	$html = $("html"),
+
+	/** 
+	* Utility to clone objects
+	* @private
+	* @function
+	* @name clon
+	* @param {Object} [o] Object to clone
+	* @returns object
+	*/
 	clone = function (o) {
 		var copy = {},
 			x;
@@ -25,9 +90,9 @@ var win = exports,
 	},
 	/**
 	* Extend is a method that allows you to extend Chico or other objects with new members.
+	* @private
 	* @name extend
 	* @function
-	* @memberOf ch
 	* @param {Object} [obj] The object that have new members.
 	* @param {Object} [destination] The destination object. If this object is undefined, ch will be the destination object.
 	* @returns Object
@@ -65,6 +130,15 @@ var win = exports,
 		}
 		return d;
 	},
+
+	/** 
+	* Returns if an object is an array.
+	* @private
+	* @function
+	* @name isArray
+	* @param {Object} [o] The object to be checked.
+	* @returns {boolean}
+	*/
 	isArray = (function () {
 
 		if (Array.hasOwnProperty("isArray")) {
@@ -75,6 +149,16 @@ var win = exports,
 			return Object.prototype.toString.apply(o) === "[object Array]";
 		};
 	}()),
+
+	/** 
+	* Returns a boolean indicating whether the object has the specified property.
+	* @private
+	* @function
+	* @name hasOwn
+	* @param {Object} [o] The object to be checked.
+	* @param {String} [property] The name of the property to test.
+	* @returns {boolean}
+	*/
 	hasOwn = (function () {
 		var hOP = Object.prototype.hasOwnProperty;
 
@@ -82,9 +166,27 @@ var win = exports,
 			return hOP.call(o, property);
 		};
 	}()),
-	isTag = function (string) {
-		return (/<([\w:]+)/).test(string);
+
+	/** 
+	* Returns a boolean indicating whether the string is a HTML tag.
+	* @private
+	* @function
+	* @name isTag
+	* @param {String} [tag] The name of the tag to be checked.
+	* @returns {boolean}
+	*/
+	isTag = function (tag) {
+		return (/<([\w:]+)/).test(tag);
 	},
+
+	/** 
+	* Returns a boolean indicating whether the string is a CSS selector.
+	* @private
+	* @function
+	* @name isSelector
+	* @param {String} [selector] The selector to be checked.
+	* @returns {boolean}
+	*/
 	isSelector = function (selector) {
 		if (typeof selector !== "string") { return false; }
 		var regex;
@@ -95,6 +197,16 @@ var win = exports,
 		};
 		return false;
 	},
+
+	/** 
+	* Returns a boolean indicating whether the selector is into DOM.
+	* @private
+	* @function
+	* @name inDom
+	* @param {String} [selector] The selector to be checked.
+	* @param {String} [context] Explicit context to the selector.
+	* @returns {boolean}
+	*/
 	inDom = function (selector, context) {
 		if (typeof selector !== "string") { return false; }
 		// jQuery: If you wish to use any of the meta-characters ( such as !"#$%&'()*+,./:;<=>?@[\]^`{|}~ ) as a literal part of a name, you must escape the character with two backslashes: \\.
@@ -103,9 +215,26 @@ var win = exports,
 		});
 		return qsa(selector, context).length > 0;
 	},
+
+	/** 
+	* Returns a boolean indicating whether the string is an URL.
+	* @private
+	* @function
+	* @name isUrl
+	* @param {String} [url] The URL to be checked.
+	* @returns {boolean}
+	*/
 	isUrl = function (url) {
 		return ((/^((http(s)?|ftp|file):\/{2}(www)?|www.|((\/|\.{1,2})([\w]|\.{1,2})*\/)+|(\.\/|\/|\:\d))([\w\-]*)?(((\.|\/)[\w\-]+)+)?([\/?]\S*)?/).test(url));
 	},
+
+	/** 
+	* Adds CSS rules to disable text selection highlighting.
+	* @private
+	* @function
+	* @name avoidTextSelection
+	* @param {HTMLElement} The HTMLElement to disable text selection highlighting.
+	*/
 	avoidTextSelection = function () {
 		$.each(arguments, function(e){
 			if ($.browser.msie) {
@@ -118,9 +247,33 @@ var win = exports,
 		});
 		return;
 	},
-	// Based on: http://www.quirksmode.org/dom/getstyles.html
+
+	/** 
+	* Gives the final used values of all the CSS properties of an element.
+	* @private
+	* @function
+	* @name getStyles
+	* @param {HTMLElement} [element] The element for which to get the computed style.
+	* @param {String} [style] The name of the CSS property to test.
+	* @see Based on: http://www.quirksmode.org/dom/getstyles.html
+	* @returns {CSSStyleDeclaration}
+	*/
 	getStyles = function (element, style) {
-			return getComputedStyle(element, "").getPropertyValue(style);
+		return getComputedStyle(element, "").getPropertyValue(style);
 	},
+
+	/** 
+	* zIndex values
+	* @private
+	* @name index
+	* @type {Number}
+	*/
 	zIndex = 1000,
-	index = 0; // global instantiation index
+
+	/** 
+	* Global instantiation index
+	* @private
+	* @name index
+	* @type {Number}
+	*/
+	index = 0;

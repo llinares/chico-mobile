@@ -1,19 +1,21 @@
 /**
-* Chico Mobile Namespace
+* ch is the namespace for Chico Mobile.
 * @namespace ch
 * @name ch
+* @static
 */
 var ch = {
+
 	/**
 	* Current version
 	* @name version
 	* @type number
 	* @memberOf ch
 	*/
-	"version": "0.4.5",
+	"version": "0.5.0",
 
 	/**
-	* Here you will find a map of all component's instances created by Chico Mobile.
+	* Here you will find a map of all component's instances created by Chico-UI.
 	* @name instances
 	* @type object
 	* @memberOf ch
@@ -24,7 +26,7 @@ var ch = {
 	* Inherit from a Class borrowing a constructor
 	* @name inherits
 	* @function
-	* @returns Object
+	* @returns {object}
 	* @memberOf ch
 	*/
 	"inherit": function (Parent, child) {
@@ -33,27 +35,11 @@ var ch = {
 			return clone(child);
 		}
 
-		throw("Chico - ch.inherit: Parent is not defined.");
+		throw("Chico Mobile - ch.inherit: Parent is not defined.");
 	},
 
 	/**
-	* Mix-in Pattern
-	* @name use
-	* @function
-	* @returns Object
-	* @memberOf ch
-	*/
-	"use": function (klass, obj) {
-		var x;
-		for (x in obj) {
-			klass[x] = obj[x];
-		}
-
-		return klass;
-	},
-
-	/**
-	* Constructor function.
+	* Core constructor function.
 	* @name init
 	* @function
 	* @memberOf ch
@@ -70,11 +56,11 @@ var ch = {
 	},
 
 	/**
-	* Available device's features.
-	* @name support
-	* @type object
-	* @see ch.Support
-	* @memberOf ch
+	* Available device's features
+	* @name Support
+	* @class Support
+	* @returns {object}
+	* @memberOf ch 
 	*/
 	"support": (function () {
 
