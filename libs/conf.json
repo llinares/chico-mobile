@@ -1,16 +1,16 @@
 {
 	"name": "Chico Mobile",
 	"version": "0.5",
-	"input": "../../../chico.mobile/src",
+	"input": "../../../chico-mobile/src",
 	"output": "~/development/chico.site/public/downloads",
 	"templates": {
 		"js": {
-			"min": "/* Chico Mobile v<version> chico-ui.com.ar | chico-ui.com.ar/license */\n;(function(exports, $){\"use strict\";<code>;exports.chico = exports.ch = ch;ch.init();})(window, $);",
-			"full": "/*\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle.\n */\n\n;(function (exports, $) {\n\n\"use strict\";\n\n<code>\n\nexports.chico = exports.ch = ch;\n\nch.init();\n\n})(window, $);"
+			"min": "/*! Chico Mobile v<version> chico-ui.com.ar/mobile | chico-ui.com.ar/license */\n;(function(exports, $){\"use strict\";<code>;exports.chico = exports.ch = ch;ch.init();})(window, $);",
+			"full": "/*!\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/mobile\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n */\n\n;(function (exports, $) {\n\n\"use strict\";\n\n<code>\n\nexports.chico = exports.ch = ch;\n\nch.init();\n\n})(window, $);"
 		},
 		"css": {
-			"min": "/*! Chico Mobile v<version> chico-ui.com.ar | chico-ui.com.ar/license */\n<code>",
-			"full": "/*!\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n *\n * Team: Hernan Mammana, Leandro Linares, Guillermo Paz, Natalia Devalle.\n */\n\n<code>"
+			"min": "/*! Chico Mobile v<version> chico-ui.com.ar/mobile | chico-ui.com.ar/license */\n<code>",
+			"full": "/*!\n * Chico Mobile v<version>\n * http://chico-ui.com.ar/mobile\n *\n * Copyright (c) <copyright>, MercadoLibre.com\n * Released under the MIT license.\n * http://chico-ui.com.ar/license\n */\n\n<code>"
 		}
 	},
 	"packages": [{
@@ -19,5 +19,5 @@
 		"min": false
 	}],
 	"dependencies": "zepto",
-	"filesOrder": "polyfills,helpers,core,events,navigation,content,factory,widget,header,form,modal,expando,menu,layer"
+	"filesOrder": "polyfills,helpers,normalize,core,events,navigation,content,factory,widget,header,form,modal,expando,menu,layer"
 }
