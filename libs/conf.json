@@ -19,5 +19,5 @@
 		"min": false
 	}],
 	"dependencies": "zepto",
-	"filesOrder": "helpers,core,icon,header,button,box,list,transition,tag,pagination,table,events,navigation,content,factory,widget,form,modal,expando,menu,layer"
+	"filesOrder": "normalize,helpers,core,icon,header,button,box,list,transition,tag,pagination,table,events,navigation,content,factory,widget,form,modal,expando,menu,layer"
 }
