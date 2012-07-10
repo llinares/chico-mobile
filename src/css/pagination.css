@@ -13,6 +13,7 @@
 
 .ch-pagination a,
 .ch-pagination-current a {
+	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	font-size: 1.13em;
 	padding: 5px 8px;

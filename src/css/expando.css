@@ -4,6 +4,7 @@
 
 .ch-bellows,
 .ch-expando {
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	padding: 0;
 	border: 1px solid #EEE;
@@ -21,6 +22,7 @@
 	cursor: pointer;
 	display: block;
 	font-weight: bold;
+	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	margin: 0;
 	position: relative;
@@ -45,6 +47,8 @@
 	border-bottom: 1px solid #EEE;
 	background-color: #EEE;
 	color: #333;
+	-webkit-border-bottom-left-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 }

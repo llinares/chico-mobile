@@ -41,6 +41,7 @@ dl.ch-list dd {
 */
 .ch-list-menu {
 	background-color: #f4f4f4;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	margin: 0 0 1.5em;
 	border: 1px solid #EEEEEE;

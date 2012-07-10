@@ -21,12 +21,10 @@
 
 .ch-datagrid th {
 	background-color: #EEEEEE;
-	background-image: -o-linear-gradient(top, #F9F9F9, #EEEEEE 100%);
-	background-image: -ms-linear-gradient(top, #F9F9F9, #EEEEEE 100%);
-	background-image: -moz-linear-gradient(top, #F9F9F9, #EEEEEE 100%);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F9F9F9), color-stop(100%, #EEEEEE));
-	background-image: -webkit-linear-gradient(top, #F9F9F9, #EEEEEE 100%);
-	background-image: linear-gradient(top, #F9F9F9 0%, #EEEEEE 100%);
+	background-image: -webkit-linear-gradient(#F9F9F9, #EEEEEE);
+	background-image: -moz-linear-gradient(#F9F9F9, #EEEEEE);
+	background-image: -o-linear-gradient(#F9F9F9, #EEEEEE);
+	background-image: linear-gradient(#F9F9F9, #EEEEEE);
 	border-bottom: 1px solid #CECECE;
 	border-left: 1px solid #CECECE;
 	padding: 0 10px;

@@ -183,9 +183,8 @@ form .ch-form-error:focus,
 form .ch-form-error:focus {
 	border:2px solid #CC0000;
 	padding:4px 3px;
-	box-shadow:2px #CC0000;
-	-moz-box-shadow:2px #CC0000;
 	-webkit-box-shadow:2px #CC0000;
+	box-shadow:2px #CC0000;
 }
 
 
