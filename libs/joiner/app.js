@@ -26,38 +26,18 @@ app.get("/assets/:file", function (req, res) {
 		"html": "text/html",
 		"css": "text/css",
 		"js": "text/javascript",
-		"undefined": "text/plain"
-	}[ext]);
-
-	res.send(content);	
-});
-
-
-// Fonts getter
-// http://localhost:3000/fonts/xxxxx.*
-app.get("/fonts/:file", function (req, res) {
-
-	// Read file content
-	// "../../src/assets/"
-	var content = fs.readFileSync("../../../chico.mobile/src/fonts/" + req.params.file),
-
-	// File extension
-		ext = req.params.file.split(".").pop();
-	
-	// Return when file not exists
-	if (!content) { return }
-	
-	res.header("Content-Type", {
 		"eot": "application/vnd.ms-fontobject",
 		"ttf": "application/x-font-ttf",
 		"ttc": "application/x-font-ttf",
 		"otf": "font/opentype",
-		"woff": "application/x-font-woff"
+		"woff": "application/x-font-woff",
+		"undefined": "text/plain"
 	}[ext]);
+
+	res.header("Access-Control-Allow-Origin", "*");
 
 	res.send(content);	
 });
-
 
 // JS and CSS getter
 
