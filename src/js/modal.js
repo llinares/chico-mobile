@@ -90,6 +90,25 @@ ch.Modal = function (conf) {
 			return that;
 		},
 
+		/**
+		* Hides component's content.
+		* @privated
+		* @function
+		* @name ch.Modal#hide
+		* @returns itself
+		*/
+		hide = function () {
+
+			if (!that.active) { return; }
+
+			that.active = false;
+			
+			that.$container.addClass("ch-hide");
+
+			$index.removeClass("ch-hide");
+
+			return that;
+		},
 
 		/**
 		* Private reference to the index page
@@ -162,9 +181,9 @@ ch.Modal = function (conf) {
 
 		if (that.active) { return; }
 
-		ch.routes.go(hash);
-
 		that.active = true;
+
+		ch.routes.update(hash);
 
 		$index.addClass("ch-hide");
 
@@ -180,19 +199,9 @@ ch.Modal = function (conf) {
 	* @name ch.Modal#innerHide
 	* @returns itself
 	*/
-	that.innerHide = function (page) {
-
-		if (!that.active) { return; }
-
-		var page = page || "";
-
-		ch.routes.go(page);
-
-		that.active = false;
-		
-		that.$container.addClass("ch-hide");
-
-		$index.removeClass("ch-hide");
+	that.innerHide = function (hash) {
+		hide();
+		ch.routes.update(hash);
 
 		return that;
 	};
@@ -212,11 +221,12 @@ ch.Modal = function (conf) {
 		// ClassNames
 
 		// Events
-		$el.bind("tap click", function (event) { event.preventDefault(); that.innerShow(); });
-		//el.addEventListener("touchend", function (event) { event.preventDefault(); that.innerShow(); });
+		/*$el.bind("tap click", function (event) { 
+			event.preventDefault();
+			that.innerShow();
+		});*/
 
 		// Content behaivor
-
 		// ClassNames
 		that.$content
 			.addClass("ch-" + that.type + "-content")
@@ -228,7 +238,7 @@ ch.Modal = function (conf) {
 		if (conf.open) { that.innerShow(); }
 
 		// Hash routes
-		routes[""] = that.innerHide;
+		routes[""] = hide;
 		routes[hash] = that.innerShow;
 		ch.routes.add(routes);
 	};
