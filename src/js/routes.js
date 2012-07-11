@@ -1,15 +1,14 @@
-ch.navigation = (function () {
+ch.routes = (function () {
 	var pages = {},
 		data,
 		loc = win.location,
 		history = win.history,
 		url,
 		x,
-		//current =  win.location.hash,
-		event = (win.onpopstate === null) ? "popstate" : "hashchange",
-		setSource = function () {
-			url = loc.hash.split("#")[1];
-			if (url === undefined) {	
+		//event = ("onpopstate" in window) ? "popstate" : "hashchange",
+		setSource = function (event) {
+			url = loc.hash.split("#!/")[1];
+			if (url === undefined) {
 				pages[""].forEach(function (e, i) {
 					e();
 				});
@@ -21,11 +20,9 @@ ch.navigation = (function () {
 
 	pages[""] = [];
 
-
-	win.addEventListener(event, setSource);
+	$win.bind("popstate", setSource);
 
 	return {
-		//"current": current,
 
 		"add": function (routes) {
 			for (x in routes) {
@@ -42,13 +39,17 @@ ch.navigation = (function () {
 		},
 
 		"go": function (hash) {
-			hash = hash || "";
-			loc.hash = hash;
-			if (hash === "") {
-				history.replaceState(null, "", "/");
-			}
+			event.preventDefault();
 
-			//this.current = hash;
+			hash = hash || "";
+
+			// Update hash
+			loc.hash = "#!/" + hash;
+			
+			// If home page, delete empty hash
+			if (hash === "") {
+				history.pushState(null, "", "/");
+			}
 		}
 	};
 }());

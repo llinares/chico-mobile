@@ -12,7 +12,7 @@ var ch = {
 	* @type number
 	* @memberOf ch
 	*/
-	"version": "0.5.0",
+	"VERSION": "0.5.0",
 
 	/**
 	* Here you will find a map of all component's instances created by Chico-UI.
@@ -51,6 +51,8 @@ var ch = {
 		ch.hideUrlBarOnLoad();
 		// Prevent zoom onfocus
 		ch.preventZoom();
+		// Fix the broken iPad/iPhone form label click issue
+		fixLabels();
 		// Remove no-js classname
 		$html.removeClass("no-js");
 	},
@@ -59,10 +61,10 @@ var ch = {
 	* Available device's features
 	* @name Support
 	* @class Support
-	* @returns {object}
+	* @returns {Object}
 	* @memberOf ch 
 	*/
-	"support": (function () {
+	"SUPPORT": (function () {
 
 	}())
 
@@ -78,8 +80,8 @@ var ch = {
 
 	// Fix for iPhone viewport scale bug 
 	// http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
-	MBP.viewportmeta = qs('meta[name="viewport"]');
-	MBP.ua = browser.userAgent;
+	MBP.viewportmeta = $('meta[name="viewport"]');
+	MBP.ua = browser.userAgent || navigator.userAgent;
 
 	MBP.gestureStart = function () {
 		MBP.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
@@ -147,7 +149,7 @@ var ch = {
 	// Prevent iOS from zooming onfocus
 	// https://github.com/h5bp/mobile-boilerplate/pull/108
 	MBP.preventZoom = function () {
-		var formFields = qsa('input, select, textarea'),
+		var formFields = $('input, select, textarea'),
 			contentString = 'width=device-width,initial-scale=1,maximum-scale=',
 			i = 0;
 		for (; i < formFields.length; i += 1) {

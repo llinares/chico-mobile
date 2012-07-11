@@ -1,12 +1,12 @@
 /**
 * Chico UI global events reference.
-* @name Events
-* @class Events
+* @name EventEmitter
+* @class EventEmitter
 * @see https://github.com/pazguille/jvent - MIT License
 * @memberOf ch
 * @static
 */
-ch.Events = function () {
+ch.EventEmitter = function () {
 	var collection = {},
 		maxListeners = 10;
 
@@ -14,7 +14,7 @@ ch.Events = function () {
 	* Adds a listener to the collection for a specified event.
 	* @protected
 	* @function
-	* @name ch.Events#addListener
+	* @name ch.EventEmitter#addListener
 	* @param {string} event Event name.
 	* @param {function} listener Listener function.
 	* @exampleDescription Adds a new listener.
@@ -34,7 +34,7 @@ ch.Events = function () {
 		}
 
 		if (collection[event].length + 1 > maxListeners) {
-				throw "Warning: So many listeners for an event.";
+			throw "Warning: So many listeners for an event.";
 		}
 		
 		collection[event].push(listener);
@@ -50,7 +50,7 @@ ch.Events = function () {
 	* Adds a one time listener to the collection for a specified event. It will execute only once.
 	* @protected
 	* @function
-	* @name ch.Events#once
+	* @name ch.EventEmitter#once
 	* @param {string} event Event name.
 	* @param {function} listener Listener function.
 	* @returns itself
@@ -75,7 +75,7 @@ ch.Events = function () {
 	* Removes a listener from the collection for a specified event.
 	* @protected
 	* @function
-	* @name ch.Events#removeListener
+	* @name ch.EventEmitter#removeListener
 	* @param {string} event Event name.
 	* @param {function} listener Listener function.
 	* @returns itself
@@ -114,7 +114,7 @@ ch.Events = function () {
 	* Removes all listeners from the collection for a specified event.
 	* @protected
 	* @function
-	* @name ch.Events#removeAllListeners
+	* @name ch.EventEmitter#removeAllListeners
 	* @param {string} event Event name.
 	* @returns itself
 	* @exampleDescription Removes all listeners.
@@ -131,7 +131,7 @@ ch.Events = function () {
 	* Increases the number of listeners. Set to zero for unlimited.
 	* @protected
 	* @function
-	* @name ch.Events#setMaxListeners
+	* @name ch.EventEmitter#setMaxListeners
 	* @param {number} n Number of max listeners.
 	* @returns itself
 	* @exampleDescription Increases the number of listeners.
@@ -148,7 +148,7 @@ ch.Events = function () {
 	* Returns all listeners from the collection for a specified event.
 	* @protected
 	* @function
-	* @name ch.Events#listeners
+	* @name ch.EventEmitter#listeners
 	* @param {string} event The name of the Event.
 	* @returns Array
 	* @exampleDescription Gets all listeners.
@@ -161,7 +161,7 @@ ch.Events = function () {
 
 	/**
 	* Execute each of the listener collection in order with the data object.
-	* @name ch.Events#emit
+	* @name ch.EventEmitter#emit
 	* @protected
 	* @param {string} event The event name you want to emit.
 	* @param {object} data Optionl data

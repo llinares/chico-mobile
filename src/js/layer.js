@@ -45,7 +45,7 @@ ch.Layer = function (conf) {
 	conf.aria = {};
 	conf.aria.role = "tooltip";
 	conf.aria.identifier = "aria-describedby";
-	conf.classes = conf.classes || "ch-box ch-cone ch-points-ctcb";
+	conf.classes = conf.classes || "ch-box ch-cone ch-points-ltlb";
 
 	that.conf = conf;
 	that.type = "layer"

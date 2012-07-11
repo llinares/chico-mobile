@@ -9,7 +9,7 @@
 * @returns itself
 * @factorized
 * @see ch.Widget
-* @see ch.Navigation
+* @see ch.Routes
 * @exampleDescription Create a new modal window triggered by an anchor with a class name 'example'.
 * @example
 * var widget = $("a.example").modal();
@@ -105,7 +105,7 @@ ch.Modal = function (conf) {
 		* @name ch.Modal#hash
 		* @type String
 		*/
-		hash = conf.hash || el.href.split("#")[1] || that["type"] + "-" + that.uid,
+		hash = conf.hash || el.href.split("#!/")[1] || that["type"] + "-" + that.uid,
 
 		/**
 		* Routes maps
@@ -162,7 +162,7 @@ ch.Modal = function (conf) {
 
 		if (that.active) { return; }
 
-		ch.navigation.go(hash);
+		ch.routes.go(hash);
 
 		that.active = true;
 
@@ -186,14 +186,13 @@ ch.Modal = function (conf) {
 
 		var page = page || "";
 
-		ch.navigation.go(page);
+		ch.routes.go(page);
 
 		that.active = false;
 		
 		that.$container.addClass("ch-hide");
 
 		$index.removeClass("ch-hide");
-
 
 		return that;
 	};
@@ -213,10 +212,8 @@ ch.Modal = function (conf) {
 		// ClassNames
 
 		// Events
-		el.addEventListener("click", function (event) {
-			event.preventDefault();
-			that.innerShow();
-		});
+		$el.bind("tap click", function (event) { event.preventDefault(); that.innerShow(); });
+		//el.addEventListener("touchend", function (event) { event.preventDefault(); that.innerShow(); });
 
 		// Content behaivor
 
@@ -230,10 +227,10 @@ ch.Modal = function (conf) {
 		// Visual configuration
 		if (conf.open) { that.innerShow(); }
 
-		// Hash navigation
+		// Hash routes
 		routes[""] = that.innerHide;
 		routes[hash] = that.innerShow;
-		ch.navigation.add(routes);
+		ch.routes.add(routes);
 	};
 
 /**

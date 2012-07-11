@@ -18,8 +18,8 @@ ch.Widget = function () {
 	*/
 	var that = this;
 
-	// Use ch.Events Class
-	ch.Events.call(that);
+	// Use ch.EventEmitter Class
+	ch.EventEmitter.call(that);
 
 	/**
 	* Status of component

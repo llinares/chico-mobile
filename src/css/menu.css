@@ -4,6 +4,7 @@
 
 .ch-menu {
 	border: 1px solid #EEE;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	padding: 0;
 }
@@ -12,6 +13,7 @@
 .ch-menu .ch-expando,
 .ch-menu .ch-bellows-trigger,
 .ch-menu .ch-expando-trigger {
+	-webkit-border-radius: 0;
 	border-radius: 0;
 }
 
@@ -19,6 +21,8 @@
 .ch-menu .ch-expando:first-of-type,
 .ch-menu .ch-bellows:first-of-type .ch-bellows-trigger,
 .ch-menu .ch-expando:first-of-type .ch-expando-trigger {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -40,13 +44,17 @@
 .ch-menu .ch-expando:last-of-type,
 .ch-menu .ch-bellows:last-of-type .ch-bellows-trigger,
 .ch-menu .ch-expando:last-of-type .ch-expando-trigger {
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
 
 .ch-menu .ch-expando:last-of-type .ch-expando-trigger-on {
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
 
 .ch-menu .ch-expando-content {

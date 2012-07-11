@@ -228,7 +228,8 @@ ch.Expando = function (conf) {
 		/*if (conf.icon) { }*/
 
 		// Events
-		that.trigger.addEventListener("click", function (event) { event.preventDefault(); that.innerShow(event); });
+		that.$trigger.bind("tap click", function (event) { event.preventDefault(); that.innerShow(event); });
+		//that.trigger.addEventListener("touchend", function (event) { event.preventDefault(); that.innerShow(event); });
 
 		// Content behaivor
 

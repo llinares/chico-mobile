@@ -6,6 +6,15 @@
 */
 var win = exports,
 
+
+	/**
+	* Private reference to the html zepto object
+	* @private
+	* @name $html
+	* @type Zepto Object
+	*/
+	$win = $(win),
+
 	/**
 	* Private reference to the navigator object
 	* @private
@@ -23,36 +32,12 @@ var win = exports,
 	doc = win.document,
 
 	/**
-	* Returns the first element within the document that matches the specified group of selectors.
-	* @private
-	* @name qa
-	* @type function
-	* @param {String} [selector] A string containing one or more CSS selectors separated by commas.
-	* @returns HTMLElement Object
-	*/
-	qs = function (selector) {
-		return doc.querySelector(selector);
-	},
-
-	/**
-	* Returns a list of the elements within the document that match the specified group of selectors.
-	* @private
-	* @name qsa
-	* @type function
-	* @param {String} [selector] A string containing one or more CSS selectors separated by commas.
-	* @returns NodeList
-	*/
-	qsa = function (selector) {
-		return doc.querySelectorAll(selector);
-	},
-
-	/**
 	* Private reference to the body element
 	* @private
 	* @name body
 	* @type HTMLBodyElement
 	*/
-	body = qs("body"),
+	body = doc.body,
 
 	/**
 	* Private reference to the html element
@@ -60,7 +45,7 @@ var win = exports,
 	* @name html
 	* @type HTMLElement
 	*/
-	html = qs("html"),
+	html = doc.getElementsByTagName("html")[0],
 
 	/**
 	* Private reference to the html zepto object
@@ -68,7 +53,7 @@ var win = exports,
 	* @name $html
 	* @type Zepto Object
 	*/
-	$html = $("html"),
+	$html = $(html),
 
 	/** 
 	* Utility to clone objects
@@ -213,7 +198,7 @@ var win = exports,
 		var selector = selector.replace(/(\!|\"|\$|\%|\&|\'|\(|\)|\*|\+|\,|\/|\;|\<|\=|\>|\?|\@|\[|\\|\]|\^|\`|\{|\||\}|\~)/gi, function (str, $1) {
 			return "\\\\" + $1;
 		});
-		return qsa(selector, context).length > 0;
+		return $(selector, context).length > 0;
 	},
 
 	/** 
@@ -260,6 +245,36 @@ var win = exports,
 	*/
 	getStyles = function (element, style) {
 		return getComputedStyle(element, "").getPropertyValue(style);
+	},
+
+	/** 
+	* Fixes the broken iPad/iPhone form label click issue.
+	* @private
+	* @function
+	* @name labels
+	* @see Based on: http://www.quirksmode.org/dom/getstyles.html
+	* @returns {CSSStyleDeclaration}
+	*/
+	fixLabels = function () {
+		var labels = document.getElementsByTagName("label"),
+			target_id, 
+			el,
+			i = 0;
+
+		function labelClick() {
+			el = document.getElementById(this.getAttribute('for'));
+			if (['radio', 'checkbox'].indexOf(el.getAttribute('type')) != -1) {
+				el.setAttribute('selected', !el.getAttribute('selected'));
+			} else {
+				el.focus();
+			}
+		}
+
+		for (; labels[i]; i += 1) {
+			if (labels[i].getAttribute("for")) {
+				$(labels[i]).bind("tap", labelClick);
+			}
+		}
 	},
 
 	/** 
