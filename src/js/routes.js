@@ -21,7 +21,7 @@ ch.routes = (function () {
 
 	pages[""] = [];
 
-	$win.bind("popstate hashchange", resolvePaths);
+	$win.bind(EVENT.PATH_CHANGE, resolvePaths);
 
 	return {
 

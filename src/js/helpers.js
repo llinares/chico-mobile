@@ -272,7 +272,7 @@ var win = exports,
 
 		for (; labels[i]; i += 1) {
 			if (labels[i].getAttribute("for")) {
-				$(labels[i]).bind("tap", labelClick);
+				$(labels[i]).bind(EVENT.TAP, labelClick);
 			}
 		}
 	},
@@ -291,4 +291,16 @@ var win = exports,
 	* @name index
 	* @type {Number}
 	*/
-	index = 0;
+	index = 0,
+
+	/**
+	* Chico Mobile global events reference.
+	* @name Event
+	* @class Event
+	* @memberOf ch
+	* @static
+	*/	
+	EVENT = {
+		"TAP": (("ontouchend" in win) ? "touchend" : "click"),
+		"PATH_CHANGE": (("onpopstate" in win) ? "popstate" : "hashchange")
+	};

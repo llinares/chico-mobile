@@ -217,15 +217,6 @@ ch.Modal = function (conf) {
 		// ARIA
 		el.setAttribute("aria-label", "ch-" + that["type"] + "-" + that.uid);
 
-		// Trigger behaivor
-		// ClassNames
-
-		// Events
-		/*$el.bind("tap click", function (event) { 
-			event.preventDefault();
-			that.innerShow();
-		});*/
-
 		// Content behaivor
 		// ClassNames
 		that.$content
