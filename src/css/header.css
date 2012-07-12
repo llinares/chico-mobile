@@ -26,6 +26,7 @@
 	background-image: -moz-linear-gradient(#fdee4c 44%, #f0da16 90%);
 	background-image: -o-linear-gradient(#fdee4c 44%, #f0da16 90%);
 	background-image: linear-gradient(#fdee4c 44%, #f0da16 90%);
+	color: #5B562F;
 }
 
 .ch-header-skin {
@@ -34,6 +35,7 @@
 	background-image: -moz-linear-gradient(#efefef 10%, #e2e2e2 56%);
 	background-image: -o-linear-gradient(#efefef 10%, #e2e2e2 56%);
 	background-image: linear-gradient(#efefef 10%, #e2e2e2 56%);
+	color: #666666;
 }
 
 /*[class*="ch-header"] h1,*/
@@ -44,15 +46,6 @@
 	text-shadow: 0 1px 0 #FFF;
 }
 
-.ch-header h1 {
-	color: #5B562F;	
-}
-
-.ch-header-skin h1 {
-	color: #666666;
-}
-
-
 .ch-header nav,
 .ch-header-skin nav {
 	position: absolute;
@@ -60,10 +53,6 @@
 	left: 0;
 	width: 100%;
 	height: 40px;
-}
-
-.ch-header-skin h1 {
-	color: #666;
 }
 
 .ch-header .ch-action-left,
