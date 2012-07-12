@@ -21,7 +21,6 @@
 	font-size: 1.2em;
 	height: auto;
 	line-height: 1.199em;
-
 	padding: 0.305em 0.777em;
 	text-decoration: none;
 }
@@ -110,7 +109,7 @@ a.ch-btn-header:visited {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-	color: #666666;
+	color: inherit;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
@@ -155,7 +154,6 @@ a.ch-btn-header:visited {
 	background-image: linear-gradient(rgba(100,100,100, 0.12) 25%, rgba(100,100,100, 0.2));
 	-webkit-box-shadow: inset 0 1px 0 rgba(100, 100, 100, 0.2);
 	box-shadow: inset 0 1px 0 rgba(100, 100, 100, 0.2);
-	color: #777777;
 }
 
 
