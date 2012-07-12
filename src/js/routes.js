@@ -1,18 +1,19 @@
 ch.routes = (function () {
 	var pages = {},
 		data,
-		loc = win.location,
+		location = win.location,
 		history = win.history,
 		url,
 		x,
-		//event = ("onpopstate" in window) ? "popstate" : "hashchange",
-		setSource = function (event) {
-			url = loc.hash.split("#!/")[1];
-			if (url === undefined) {
+		resolvePaths = function () {
+			url = location.hash.split("#!/")[1];
+			if (typeof url === "undefined" || url === "") {
 				pages[""].forEach(function (e, i) {
 					e();
 				});
+				return;
 			}
+
 			if (pages[url]) {
 				pages[url]();
 			}
@@ -20,35 +21,32 @@ ch.routes = (function () {
 
 	pages[""] = [];
 
-	$win.bind("popstate", setSource);
+	$win.bind(EVENT.PATH_CHANGE, resolvePaths);
 
 	return {
 
-		"add": function (routes) {
-			for (x in routes) {
+		"add": function (paths) {
+			for (x in paths) {
 				if (x === "") {
-					pages[""].push(routes[""]);
+					pages[""].push(paths[""]);
 					continue;
 				}
-				pages[x] = routes[x];
+				pages[x] = paths[x];
 			}
 		},
 
-		"rm": function (hash, fn) {
-			delete pages[hash][fn];
+		"remove": function (path, fn) {
+			delete pages[path][fn];
 		},
 
-		"go": function (hash) {
-			event.preventDefault();
+		"update": function (path) {
+			if (typeof path === "undefined") {
+				history.back();
+				return;
+			}
 
-			hash = hash || "";
-
-			// Update hash
-			loc.hash = "#!/" + hash;
-			
-			// If home page, delete empty hash
-			if (hash === "") {
-				history.pushState(null, "", "/");
+			if (location.hash === "") {
+				history.pushState(null, "", "#!/" + path);
 			}
 		}
 	};
