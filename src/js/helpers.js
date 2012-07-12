@@ -286,12 +286,29 @@ var win = exports,
 	zIndex = 1000,
 
 	/** 
-	* Global instantiation index
+	* Global instantiation widget id
 	* @private
-	* @name index
+	* @name uid
 	* @type {Number}
 	*/
-	index = 0,
+	uid = 0,
+
+	/**
+	* Private reference to the index page
+	* @privated
+	* @name ch.Modal#$mainView
+	* @type Zepto Object
+	*/
+	$mainView = (function () {
+		var $view = $("div[data-page=index]");
+
+		if ($view.length === 0) {
+			alert("Chico Mobile Error\n$mainView: The document doesn't contain an index \"page\" view.");
+			throw new Error("Chico Mobile Error\n$mainView: The document doesn't contain an index \"page\" view.");
+		}
+
+		return $view;
+	}()),
 
 	/**
 	* Chico Mobile global events reference.

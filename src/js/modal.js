@@ -105,18 +105,11 @@ ch.Modal = function (conf) {
 			
 			that.$container.addClass("ch-hide");
 
-			$index.removeClass("ch-hide");
+			$mainView.removeClass("ch-hide");
+			$mainView[0].setAttribute("aria-hidden", false);
 
 			return that;
 		},
-
-		/**
-		* Private reference to the index page
-		* @privated
-		* @name ch.Modal#$index
-		* @type Zepto Object
-		*/
-		$index = $("div[data-page=index]"),
 
 		/**
 		* Hash name
@@ -124,7 +117,7 @@ ch.Modal = function (conf) {
 		* @name ch.Modal#hash
 		* @type String
 		*/
-		hash = conf.hash || el.href.split("#!/")[1] || that["type"] + "-" + that.uid,
+		hash = conf.hash || el.href.split("#")[1] || that["type"] + "-" + that.uid,
 
 		/**
 		* Routes maps
@@ -163,7 +156,7 @@ ch.Modal = function (conf) {
 	* @type Zepto Object
 	*/
 	that.$container = (function () {
-		var $container = $("<div aria-hidden=\"true\" class=\"ch-modal ch-hide\" id=\"ch-" + that["type"] + "-" + that.uid +"\" role=\"dialog\" data-page=\"ch-modal\">");
+		var $container = $("<div data-page=\"ch-" + that["type"] + "-" + that.uid +"\" role=\"dialog\" aria-hidden=\"true\" class=\"ch-modal ch-hide\" id=\"ch-" + that["type"] + "-" + that.uid +"\">");
 
 		$container.append(that.$content);
 
@@ -185,7 +178,8 @@ ch.Modal = function (conf) {
 
 		ch.routes.update(hash);
 
-		$index.addClass("ch-hide");
+		$mainView.addClass("ch-hide");
+		$mainView[0].setAttribute("aria-hidden", true);
 
 		that.$container.removeClass("ch-hide");
 
@@ -217,18 +211,21 @@ ch.Modal = function (conf) {
 		// ARIA
 		el.setAttribute("aria-label", "ch-" + that["type"] + "-" + that.uid);
 
+		// Update hash
+		el.href = "#!/" + hash; 
+
 		// Content behaivor
 		// ClassNames
 		that.$content
 			.addClass("ch-" + that.type + "-content")
 			.removeClass("ch-hide");
 
-		$index.after(that.$container);
+		$mainView.after(that.$container);
 
 		// Visual configuration
 		if (conf.open) { that.innerShow(); }
 
-		// Hash routes
+		// Sets hash routes
 		routes[""] = hide;
 		routes[hash] = that.innerShow;
 		ch.routes.add(routes);

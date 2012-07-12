@@ -20,7 +20,7 @@ ch.factory = function (klass) {
 				"type": name,
 				"el": e,
 				"$el": $(e),
-				"uid": index += 1 // Global instantiation index
+				"uid": uid += 1 // Global instantiation index
 			};
 
 			switch (typeof conf) {

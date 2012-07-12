@@ -62,7 +62,7 @@
 </head>
 
 <body>
-	<div data-page="index" role="content">
+	<div data-page="index" role="region" aria-hidden="false">
 
 		<div class="widgets">
 			<h2>Headers</h2>
@@ -77,7 +77,7 @@
 				<h1>Pregunta</h1>
 				<nav>
 					<a class="ch-btn-header ch-action-left" href="questions.html">Cancelar</a>
-					<a class="ch-btn-header ch-action-right makeAnswer" href="#!/make-answer">Responder</a>
+					<a class="ch-btn-header ch-action-right makeAnswer" href="#make-answer">Responder</a>
 				</nav>
 			</header>
 		</div>
@@ -658,11 +658,11 @@
 		</div>
 	</div>
 
-	<div id="myModal" class="ch-hide">
+	<div id="make-answer">
 		<header class="ch-header-skin">
 			<h1>Pregunta</h1>
 			<nav>
-				<a class="ch-btn-header ch-action-right" href="#!/test">Test</a>
+				<a class="ch-btn-header ch-action-right" href="#test">Test</a>
 			</nav>
 		</header>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus. Vestibulum posuere purus non enim pharetra vel vulputate eros hendrerit. Ut pulvinar placerat risus quis interdum. Mauris eget tempus risus. Aenean accumsan dolor in lorem elementum ac tincidunt urna rutrum. Sed sit amet nunc velit, vitae tincidunt ipsum. Fusce mattis elementum justo, et lacinia odio pharetra a. Donec egestas imperdiet eros a interdum. Suspendisse sodales, ligula vitae pulvinar aliquam, elit justo pretium urna, ut hendrerit arcu dolor vitae ipsum.</p>
@@ -676,7 +676,7 @@
 		var e = $(".categories").expando();
 		var m = $(".myMenu").menu();
 		var mo = $(".makeAnswer").modal({
-			"content": "#myModal"
+			"content": "#make-answer"
 		});
 
 		ch.routes.add({
