@@ -28,7 +28,7 @@ ch.Modal = function (conf) {
 	/**
 	* Reference to a internal component instance, saves all the information and configuration properties.
 	* @private
-	* @name ch.Modal#that
+	* @name ch.Modal-that
 	* @type object
 	*/
 	var that = this,
@@ -36,7 +36,7 @@ ch.Modal = function (conf) {
 		/**
 		* Reference to Parent Class.
 		* @private
-		* @name ch.Modal#parent
+		* @name ch.Modal-parent
 		* @type object
 		*/
 		parent,
@@ -44,7 +44,7 @@ ch.Modal = function (conf) {
 		/**
 		* Reference to configuration object.
 		* @private
-		* @name ch.Modal#conf
+		* @name ch.Modal-conf
 		* @type object
 		*/
 		conf = clone(conf) || {};
@@ -64,7 +64,7 @@ ch.Modal = function (conf) {
 	/**
 	* Private reference to the element
 	* @privated
-	* @name ch.Modal#el
+	* @name ch.Modal-el
 	* @type HTMLElement
 	*/
 	var el = that.el,
@@ -73,28 +73,16 @@ ch.Modal = function (conf) {
 		/**
 		* Private reference to the Zepto element
 		* @privated
-		* @name ch.Modal#$el
+		* @name ch.Modal-$el
 		* @type Zepto Object
 		*/
 		$el = that.$el,
 
 		/**
-		* The component's toggle.
-		* @privated
-		* @function
-		* @name ch.Modal#$toggle
-		* @returns itself
-		*/
-		toggle = function () {
-
-			return that;
-		},
-
-		/**
 		* Hides component's content.
 		* @privated
 		* @function
-		* @name ch.Modal#hide
+		* @name ch.Modal-hide
 		* @returns itself
 		*/
 		hide = function () {
@@ -114,7 +102,7 @@ ch.Modal = function (conf) {
 		/**
 		* Hash name
 		* @privated
-		* @name ch.Modal#hash
+		* @name ch.Modal-hash
 		* @type String
 		*/
 		hash = conf.hash || el.href.split("#")[1] || that["type"] + "-" + that.uid,
@@ -122,7 +110,7 @@ ch.Modal = function (conf) {
 		/**
 		* Routes maps
 		* @privated
-		* @name ch.Modal#routes
+		* @name ch.Modal-routes
 		* @type Object
 		*/
 		routes = {};

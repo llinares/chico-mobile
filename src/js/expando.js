@@ -24,7 +24,7 @@ ch.Expando = function (conf) {
 	/**
 	* Reference to a internal component instance, saves all the information and configuration properties.
 	* @private
-	* @name ch.Expando#that
+	* @name ch.Expando-that
 	* @type object
 	*/
 	var that = this,
@@ -32,7 +32,7 @@ ch.Expando = function (conf) {
 		/**
 		* Reference to Parent Class.
 		* @private
-		* @name ch.Expando#parent
+		* @name ch.Expando-parent
 		* @type object
 		*/
 		parent,
@@ -40,7 +40,7 @@ ch.Expando = function (conf) {
 		/**
 		* Reference to configuration object.
 		* @private
-		* @name ch.Expando#conf
+		* @name ch.Expando-conf
 		* @type object
 		*/
 		conf = clone(conf) || {};
@@ -64,7 +64,7 @@ ch.Expando = function (conf) {
 	/**
 	* Private reference to the element
 	* @privated
-	* @name ch.Expando#el
+	* @name ch.Expando-el
 	* @type HTMLElement
 	*/
 	var el = that.el,
@@ -72,7 +72,7 @@ ch.Expando = function (conf) {
 		/**
 		* Private reference to the Zepto element
 		* @privated
-		* @name ch.Expando#$el
+		* @name ch.Expando-$el
 		* @type Zepto Object
 		*/
 		$el = that.$el,
@@ -81,7 +81,7 @@ ch.Expando = function (conf) {
 		* The component's toggle.
 		* @privated
 		* @function
-		* @name ch.Expando#$toggle
+		* @name ch.Expando-$toggle
 		* @returns itself
 		*/
 		toggle = function () {

@@ -13,7 +13,7 @@ ch.Widget = function () {
 	/**
 	* Reference to a internal component instance, saves all the information and configuration properties.
 	* @private
-	* @name ch.Widget#that
+	* @name ch.Widget-that
 	* @type object
 	*/
 	var that = this;
@@ -24,7 +24,7 @@ ch.Widget = function () {
 	/**
 	* Status of component
 	* @protected
-	* @name ch.Navs#active
+	* @name ch.Widget#active
 	* @type boolean
 	*/
 	that.active = false;
