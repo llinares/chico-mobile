@@ -25,7 +25,7 @@ ch.Menu = function (conf) {
 	/**
 	* Reference to a internal component instance, saves all the information and configuration properties.
 	* @private
-	* @name ch.Menu#that
+	* @name ch.Menu-that
 	* @type object
 	*/
 	var that = this,
@@ -33,7 +33,7 @@ ch.Menu = function (conf) {
 		/**
 		* Reference to Parent Class.
 		* @private
-		* @name ch.Menu#parent
+		* @name ch.Menu-parent
 		* @type object
 		*/
 		parent,
@@ -41,7 +41,7 @@ ch.Menu = function (conf) {
 		/**
 		* Reference to configuration object.
 		* @private
-		* @name ch.Menu#conf
+		* @name ch.Menu-conf
 		* @type object
 		*/
 		conf = clone(conf) || {};
@@ -63,7 +63,7 @@ ch.Menu = function (conf) {
 	/**
 	* Private reference to the element
 	* @privated
-	* @name ch.Menu#el
+	* @name ch.Menu-el
 	* @type HTMLElement
 	*/
 	var el = that.el,
@@ -71,7 +71,7 @@ ch.Menu = function (conf) {
 		/**
 		* Private reference to the Zepto element
 		* @privated
-		* @name ch.Menu#$el
+		* @name ch.Menu-$el
 		* @type Zepto Object
 		*/
 		$el = that.$el,
@@ -79,7 +79,7 @@ ch.Menu = function (conf) {
 		/**
 		* Indicates witch child is opened
 		* @private
-		* @name ch.Menu#selected
+		* @name ch.Menu-selected
 		* @type number
 		*/
 		selected = (conf.selected) ? conf.selected - 1 : undefined,
@@ -88,7 +88,7 @@ ch.Menu = function (conf) {
 		* Opens specific Expando child and optionally grandson
 		* @private
 		* @function
-		* @name ch.Menu#select
+		* @name ch.Menu-select
 		*/
 		select = function (child) {
 			var child = child - 1,

@@ -19,7 +19,7 @@ ch.Layer = function (conf) {
 	/**
 	* Reference to a internal component instance, saves all the information and configuration properties.
 	* @private
-	* @name ch.Layer#that
+	* @name ch.Layer-that
 	* @type object
 	*/
 	var that = this,
@@ -27,7 +27,7 @@ ch.Layer = function (conf) {
 		/**
 		* Reference to Parent Class.
 		* @private
-		* @name ch.Layer#parent
+		* @name ch.Layer-parent
 		* @type object
 		*/
 		parent,
@@ -35,7 +35,7 @@ ch.Layer = function (conf) {
 		/**
 		* Reference to configuration object.
 		* @private
-		* @name ch.Layer#conf
+		* @name ch.Layer-conf
 		* @type object
 		*/
 		conf = clone(conf) || {};
