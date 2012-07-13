@@ -1,0 +1,3 @@
+ch.content = function () {
+	
+};
