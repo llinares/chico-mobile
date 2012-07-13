@@ -28,7 +28,7 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="src/css/normalize.css">
-	<link rel="stylesheet" href="http://localhost:3000/css/min?m=true">
+	<link rel="stylesheet" href="http://localhost:3000/css">
 
 	<!-- Active for phones -->
 	<!--link rel="stylesheet" media="only screen and (min-width: 240px)" href="src/css/mobile.css" /-->
@@ -334,6 +334,7 @@
 						</p>
 					</li>
 				</ul>
+
 			</div>
 			
 			<div class="widgets">
@@ -666,9 +667,9 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus. Vestibulum posuere purus non enim pharetra vel vulputate eros hendrerit. Ut pulvinar placerat risus quis interdum. Mauris eget tempus risus. Aenean accumsan dolor in lorem elementum ac tincidunt urna rutrum. Sed sit amet nunc velit, vitae tincidunt ipsum. Fusce mattis elementum justo, et lacinia odio pharetra a. Donec egestas imperdiet eros a interdum. Suspendisse sodales, ligula vitae pulvinar aliquam, elit justo pretium urna, ut hendrerit arcu dolor vitae ipsum.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet purus in sapien luctus sodales. Curabitur dui velit, cursus in sagittis aliquam, dictum at neque. Ut gravida scelerisque lorem non pulvinar. Pellentesque et urna vitae nisl porta imperdiet sed nec ipsum. Sed non sem velit. Cras id consectetur tellus. Vestibulum posuere purus non enim pharetra vel vulputate eros hendrerit. Ut pulvinar placerat risus quis interdum. Mauris eget tempus risus. Aenean accumsan dolor in lorem elementum ac tincidunt urna rutrum. Sed sit amet nunc velit, vitae tincidunt ipsum. Fusce mattis elementum justo, et lacinia odio pharetra a. Donec egestas imperdiet eros a interdum. Suspendisse sodales, ligula vitae pulvinar aliquam, elit justo pretium urna, ut hendrerit arcu dolor vitae ipsum.</p>
 	</div>
-	
+
 	<script src="vendor/zepto.js"></script>
-	<script src="http://localhost:3000/js?m=true"></script>
+	<script src="http://localhost:3000/js"></script>
 	<script>
 		var l = $(".myLayer").layer();
 		var e = $(".categories").expando();
@@ -676,14 +677,6 @@
 		var mo = $(".makeAnswer").modal({
 			"content": "#make-answer"
 		});
-
-		ch.routes.add({
-			"test": function () {
-				mo.hide("test");
-				alert("pepe");
-			}
-		});
-
 	</script>
 </body>
 </html>
