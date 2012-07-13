@@ -10,7 +10,7 @@ var win = exports,
 	/**
 	* Private reference to the html zepto object
 	* @private
-	* @name $html
+	* @name $win
 	* @type Zepto Object
 	*/
 	$win = $(win),
