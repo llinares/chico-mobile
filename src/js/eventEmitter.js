@@ -1,10 +1,8 @@
 /**
-* Chico UI global events reference.
+* Event Emitter Class for the browser.
 * @name EventEmitter
 * @class EventEmitter
-* @see https://github.com/pazguille/jvent - MIT License
 * @memberOf ch
-* @static
 */
 ch.EventEmitter = function () {
 	var collection = {},
@@ -12,7 +10,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Adds a listener to the collection for a specified event.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#addListener
 	* @param {string} event Event name.
@@ -48,7 +46,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Adds a one time listener to the collection for a specified event. It will execute only once.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#once
 	* @param {string} event Event name.
@@ -73,7 +71,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Removes a listener from the collection for a specified event.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#removeListener
 	* @param {string} event Event name.
@@ -112,7 +110,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Removes all listeners from the collection for a specified event.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#removeAllListeners
 	* @param {string} event Event name.
@@ -129,7 +127,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Increases the number of listeners. Set to zero for unlimited.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#setMaxListeners
 	* @param {number} n Number of max listeners.
@@ -146,7 +144,7 @@ ch.EventEmitter = function () {
 
 	/**
 	* Returns all listeners from the collection for a specified event.
-	* @protected
+	* @public
 	* @function
 	* @name ch.EventEmitter#listeners
 	* @param {string} event The name of the Event.
@@ -162,7 +160,8 @@ ch.EventEmitter = function () {
 	/**
 	* Execute each of the listener collection in order with the data object.
 	* @name ch.EventEmitter#emit
-	* @protected
+	* @public
+	* @function
 	* @param {string} event The event name you want to emit.
 	* @param {object} data Optionl data
 	* @exampleDescription Emits a new custom event.

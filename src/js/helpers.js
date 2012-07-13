@@ -314,7 +314,6 @@ var win = exports,
 	* Chico Mobile global events reference.
 	* @name Event
 	* @class Event
-	* @memberOf ch
 	* @static
 	*/	
 	EVENT = {
