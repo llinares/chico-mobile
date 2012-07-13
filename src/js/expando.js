@@ -47,6 +47,7 @@ ch.Expando = function (conf) {
 
 	//conf.icon = hasOwn(conf, "icon") ? conf.icon : true;
 	conf.open = conf.open || false;
+	conf.classes = conf.classes || "";
 
 	that.conf = conf;
 

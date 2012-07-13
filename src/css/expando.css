@@ -62,6 +62,7 @@
 	margin: 0;
 }
 
+.ch-expando-content.ch-list-menu,
 .ch-expando-content .ch-list-menu {
 	margin: 0;
 	background: none;
