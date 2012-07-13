@@ -7,8 +7,6 @@
 * @returns {Object}
 * @memberOf ch
 */
-// TODO: Always it should receive a conf object as parameter (see Multiple component)
-// TODO: Try to deprecate .and() method on Validator
 ch.factory = function (klass) {
 	// Sets the klass name
 	var name = klass.toLowerCase(),
