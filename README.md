@@ -1,5 +1,5 @@
-Chico Mobile b0.4.3
-====================
+Chico Mobile 0.5
+================
 
 http://chico-ui.com.ar/mobile (Coming Soon)
 
