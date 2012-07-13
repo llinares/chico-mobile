@@ -199,12 +199,12 @@ Joiner.prototype.orderFiles = function (list, type) {
 	var self = this;
 
 	// Delete ignored expressions
-	list = list.join(",").replace((new RegExp("(.ds_store,)|(core.js,)|(core.css,)|(.js)|(.css)", "gi")), "").split(",");
+	list = list.join(",").replace((new RegExp("(.ds_store,)|(core.js,)|(core.css,)|(normalize.css,)|(.js)|(.css)", "gi")), "").split(",");
 
 	// Add core file
 	// Note: When folder is read there is a core.
 	// When files come from inheritance there isn't.
-	list.push("core");
+	list.push("normalize", "core");
 
 	// Filter ordered files matching with custom list of files
 	// Add extension on all files of the list
